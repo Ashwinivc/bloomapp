@@ -141,7 +141,7 @@ export function BloomScoreScreen() {
             <p className="text-purple-800 text-sm leading-relaxed">
               <strong>Your Daily Performance:</strong> This score reflects your commitment to self-care across mood awareness, 
               habit consistency, and mindful reflection. Each element strengthens your foundation for lasting wellness. 
-              Remember, progress isn't about perfection—it\'s about showing up for yourself with compassion and intention. 
+              Remember, progress isn't about perfection—it's about showing up for yourself with compassion and intention. 
               Every entry, every completed habit, every moment of reflection is a victory worth celebrating! 🌟
             </p>
           </div>
