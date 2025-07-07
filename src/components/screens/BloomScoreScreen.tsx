@@ -33,21 +33,21 @@ export function BloomScoreScreen() {
       value: bloomScore.mood, 
       icon: Heart, 
       color: 'pink',
-      description: 'Based on your recent mood entries'
+      description: 'Reflects your emotional well-being over the past 7 days. Consistent tracking empowers your journey!'
     },
     { 
       label: 'Habits', 
       value: bloomScore.habits, 
       icon: CheckSquare, 
       color: 'green',
-      description: 'Completion rate of daily habits'
+      description: 'Celebrates your dedication to positive daily actions. Every completed habit builds momentum!'
     },
     { 
       label: 'Reflection', 
       value: bloomScore.reflection, 
       icon: BookOpen, 
       color: 'blue',
-      description: 'Journal entries and self-reflection'
+      description: 'Highlights your growth through thoughtful journaling. Deep reflection cultivates profound self-awareness!'
     },
   ];
 
@@ -88,6 +88,10 @@ export function BloomScoreScreen() {
           
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             {getMotivationalMessage(bloomScore.overall)}
+          </p>
+          
+          <p className="text-gray-500 text-base max-w-2xl mx-auto mt-4">
+            This vibrant score beautifully captures your holistic wellness journey. Keep nurturing your growth!
           </p>
         </div>
 
