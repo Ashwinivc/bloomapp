@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowLeft, Wind, BookOpen } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
+import { trackWellnessEvent } from '../../utils/analytics';
 
 const relaxationOptions = [
   {
@@ -25,6 +26,7 @@ export function RelaxationScreen() {
   const { setCurrentScreen } = useApp();
 
   const handleOptionSelect = (action: string) => {
+    trackWellnessEvent.relaxationActivity(action);
     setCurrentScreen(action);
   };
 

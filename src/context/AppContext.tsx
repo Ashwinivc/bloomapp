@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { AppState, User, MoodEntry, Habit, JournalEntry, ChatMessage, Theme } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { trackPageView, trackWellnessEvent } from '../utils/analytics';
 
 interface AppContextType {
   state: AppState;
@@ -112,12 +113,42 @@ export function AppProvider({ children }: { children: ReactNode }) {
   }, [state, setStoredState]);
 
   const setUser = (user: User) => dispatch({ type: 'SET_USER', payload: user });
-  const setCurrentScreen = (screen: string) => dispatch({ type: 'SET_CURRENT_SCREEN', payload: screen });
-  const addMoodEntry = (entry: MoodEntry) => dispatch({ type: 'ADD_MOOD_ENTRY', payload: entry });
-  const toggleHabit = (habitId: string) => dispatch({ type: 'TOGGLE_HABIT', payload: habitId });
-  const addJournalEntry = (entry: JournalEntry) => dispatch({ type: 'ADD_JOURNAL_ENTRY', payload: entry });
-  const addChatMessage = (message: ChatMessage) => dispatch({ type: 'ADD_CHAT_MESSAGE', payload: message });
-  const setTheme = (theme: Theme) => dispatch({ type: 'SET_THEME', payload: theme });
+  
+  const setCurrentScreen = (screen: string) => {
+    dispatch({ type: 'SET_CURRENT_SCREEN', payload: screen });
+    trackPageView(screen);
+  };
+  
+  const addMoodEntry = (entry: MoodEntry) => {
+    dispatch({ type: 'ADD_MOOD_ENTRY', payload: entry });
+    trackWellnessEvent.moodEntry(entry.emoji);
+  };
+  
+  const toggleHabit = (habitId: string) => {
+    const habit = state.habits.find(h => h.id === habitId);
+    if (habit && !habit.completed) {
+      trackWellnessEvent.habitCompleted(habit.name);
+    }
+    dispatch({ type: 'TOGGLE_HABIT', payload: habitId });
+  };
+  
+  const addJournalEntry = (entry: JournalEntry) => {
+    dispatch({ type: 'ADD_JOURNAL_ENTRY', payload: entry });
+    trackWellnessEvent.journalEntry();
+  };
+  
+  const addChatMessage = (message: ChatMessage) => {
+    dispatch({ type: 'ADD_CHAT_MESSAGE', payload: message });
+    if (message.isUser) {
+      trackWellnessEvent.aiCoachInteraction();
+    }
+  };
+  
+  const setTheme = (theme: Theme) => {
+    dispatch({ type: 'SET_THEME', payload: theme });
+    trackWellnessEvent.themeChanged(theme);
+  };
+  
   const updateBloomScore = () => dispatch({ type: 'UPDATE_BLOOM_SCORE' });
   
   const resetAppState = () => {
