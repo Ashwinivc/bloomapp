@@ -93,6 +93,15 @@ export function BloomScoreScreen() {
           <p className="text-gray-500 text-base max-w-2xl mx-auto mt-4">
             This vibrant score beautifully captures your holistic wellness journey. Keep nurturing your growth!
           </p>
+          
+          <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-100">
+            <p className="text-purple-800 text-sm leading-relaxed">
+              <strong>Your Daily Performance:</strong> This score reflects your commitment to self-care across mood awareness, 
+              habit consistency, and mindful reflection. Each element strengthens your foundation for lasting wellness. 
+              Remember, progress isn't about perfection—it's about showing up for yourself with compassion and intention. 
+              Every entry, every completed habit, every moment of reflection is a victory worth celebrating! 🌟
+            </p>
+          </div>
         </div>
 
         {/* Detailed Scores */}
