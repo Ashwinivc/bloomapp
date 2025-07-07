@@ -52,6 +52,14 @@ export function LoginScreen() {
 
         <div className="mt-8 text-center text-sm text-gray-500">
           <p>Start your daily wellness journey with mindful habits and self-reflection</p>
+          <div className="mt-4">
+            <button
+              onClick={() => setCurrentScreen('privacy-policy')}
+              className="text-emerald-600 hover:text-emerald-700 underline transition-colors duration-200"
+            >
+              Privacy Policy
+            </button>
+          </div>
         </div>
       </div>
     </div>

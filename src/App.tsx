@@ -14,6 +14,7 @@ import { BreathingExerciseScreen } from './components/screens/BreathingExerciseS
 import { NatureSoundsScreen } from './components/screens/NatureSoundsScreen';
 import { MindfulReadingScreen } from './components/screens/MindfulReadingScreen';
 import { TipScreen } from './components/screens/TipScreen';
+import { PrivacyPolicyScreen } from './components/screens/PrivacyPolicyScreen';
 
 function AppContent() {
   const { state } = useApp();
@@ -46,6 +47,8 @@ function AppContent() {
         return <MindfulReadingScreen />;
       case 'tip':
         return <TipScreen />;
+      case 'privacy-policy':
+        return <PrivacyPolicyScreen />;
       default:
         return <HomeScreen />;
     }
