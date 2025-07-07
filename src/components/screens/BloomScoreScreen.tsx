@@ -21,10 +21,53 @@ export function BloomScoreScreen() {
   };
 
   const getMotivationalMessage = (score: number) => {
-    if (score >= 80) return "You're absolutely blooming! Your wellness journey is flourishing beautifully. 🌟";
-    if (score >= 60) return "Great progress! You're building wonderful habits and growing stronger each day. 🌱";
-    if (score >= 40) return "You're on the right path! Every small step is moving you toward better wellness. 🌿";
-    return "Every journey starts with a single step. You're here, and that's what matters most. 💚";
+    if (score >= 80) return "You're absolutely blooming! Your dedication shines through every aspect of your wellness journey. 🌟";
+    if (score >= 60) return "Fantastic momentum! You're cultivating beautiful habits and nurturing meaningful growth. 🌱";
+    if (score >= 40) return "Steady progress! Each mindful choice you make is building a stronger, more resilient you. 🌿";
+    return "Every wellness journey begins with courage. You're here, you're trying, and that's incredibly powerful. 💚";
+  };
+
+  const getPersonalizedMessage = (bloomScore: BloomScore) => {
+    const { mood, habits, reflection, overall } = bloomScore;
+    let message = "";
+    
+    // Habit-specific encouragement
+    if (habits < 30) {
+      message += "🌱 Small steps create big changes! Even one completed habit today is a victory worth celebrating. ";
+    } else if (habits < 60) {
+      message += "🌿 Your habit consistency is growing beautifully! Keep nurturing these positive routines. ";
+    } else if (habits < 80) {
+      message += "🌳 Excellent habit momentum! You're building a strong foundation for lasting wellness. ";
+    } else {
+      message += "🌟 Outstanding habit mastery! Your consistency is truly inspiring and transformative. ";
+    }
+    
+    // Mood-specific encouragement
+    if (mood < 40) {
+      message += "Remember, difficult emotions are temporary visitors—acknowledge them with kindness. ";
+    } else if (mood < 70) {
+      message += "Your emotional awareness is a superpower that guides your growth. ";
+    } else {
+      message += "Your positive energy radiates through your mood tracking! ";
+    }
+    
+    // Reflection-specific encouragement
+    if (reflection < 40) {
+      message += "Consider adding journaling to deepen your self-discovery journey. ";
+    } else if (reflection < 70) {
+      message += "Your thoughtful reflections are nurturing profound personal insights. ";
+    } else {
+      message += "Your commitment to self-reflection is creating beautiful inner wisdom. ";
+    }
+    
+    // Overall encouragement
+    if (overall < 50) {
+      message += "Progress isn't about perfection—it's about showing up with compassion for yourself. You're doing amazingly! 💙";
+    } else {
+      message += "Your holistic approach to wellness is creating lasting, meaningful transformation. Keep blooming! ✨";
+    }
+    
+    return message;
   };
 
   const scoreData = [
@@ -87,11 +130,11 @@ export function BloomScoreScreen() {
           </div>
           
           <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            {getMotivationalMessage(bloomScore.overall)}
+            {getPersonalizedMessage(bloomScore)}
           </p>
           
           <p className="text-gray-500 text-base max-w-2xl mx-auto mt-4">
-            This vibrant score beautifully captures your holistic wellness journey. Keep nurturing your growth!
+            {getMotivationalMessage(bloomScore.overall)}
           </p>
           
           <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-100">

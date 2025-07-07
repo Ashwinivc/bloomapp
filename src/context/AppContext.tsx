@@ -11,6 +11,7 @@ interface AppContextType {
   addChatMessage: (message: ChatMessage) => void;
   setTheme: (theme: Theme) => void;
   updateBloomScore: () => void;
+  resetAppState: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -23,7 +24,8 @@ type Action =
   | { type: 'ADD_JOURNAL_ENTRY'; payload: JournalEntry }
   | { type: 'ADD_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'SET_THEME'; payload: Theme }
-  | { type: 'UPDATE_BLOOM_SCORE' };
+  | { type: 'UPDATE_BLOOM_SCORE' }
+  | { type: 'RESET_APP_STATE' };
 
 const initialState: AppState = {
   user: null,
@@ -82,6 +84,8 @@ function appReducer(state: AppState, action: Action): AppState {
           overall: Math.round(overall),
         },
       };
+    case 'RESET_APP_STATE':
+      return initialState;
     default:
       return state;
   }
@@ -98,6 +102,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const addChatMessage = (message: ChatMessage) => dispatch({ type: 'ADD_CHAT_MESSAGE', payload: message });
   const setTheme = (theme: Theme) => dispatch({ type: 'SET_THEME', payload: theme });
   const updateBloomScore = () => dispatch({ type: 'UPDATE_BLOOM_SCORE' });
+  const resetAppState = () => dispatch({ type: 'RESET_APP_STATE' });
 
   return (
     <AppContext.Provider
@@ -111,6 +116,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         addChatMessage,
         setTheme,
         updateBloomScore,
+        resetAppState,
       }}
     >
       {children}

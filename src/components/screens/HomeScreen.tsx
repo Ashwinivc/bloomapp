@@ -8,7 +8,8 @@ import {
   MessageCircle, 
   Palette, 
   Flower2,
-  Sparkles
+  Sparkles,
+  LogOut
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
@@ -24,7 +25,7 @@ const menuItems = [
 ];
 
 export function HomeScreen() {
-  const { state, setCurrentScreen, updateBloomScore } = useApp();
+  const { state, setCurrentScreen, updateBloomScore, resetAppState } = useApp();
 
   useEffect(() => {
     updateBloomScore();
@@ -35,6 +36,13 @@ export function HomeScreen() {
     if (hour < 12) return 'Good morning';
     if (hour < 17) return 'Good afternoon';
     return 'Good evening';
+  };
+
+  const handleLogout = () => {
+    if (window.confirm('Are you sure you want to exit? Your progress will be saved locally.')) {
+      resetAppState();
+      setCurrentScreen('login');
+    }
   };
 
   return (
@@ -52,16 +60,33 @@ export function HomeScreen() {
                 {getGreeting()}, {state.user?.name}! Ready to bloom today?
               </p>
             </div>
-            <div className="text-right">
-              <div className="flex items-center text-emerald-600 mb-1">
-                <Sparkles className="w-5 h-5 mr-1" />
-                <span className="font-semibold">Bloom Score</span>
+            <div className="flex items-center space-x-4">
+              <div className="text-right">
+                <div className="flex items-center text-emerald-600 mb-1">
+                  <Sparkles className="w-5 h-5 mr-1" />
+                  <span className="font-semibold">Bloom Score</span>
+                </div>
+                <div className="text-2xl font-bold text-emerald-700">
+                  {state.bloomScore.overall}%
+                </div>
               </div>
-              <div className="text-2xl font-bold text-emerald-700">
-                {state.bloomScore.overall}%
-              </div>
+              <button
+                onClick={handleLogout}
+                className="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 transition-all duration-200 group"
+                title="Exit App"
+              >
+                <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              </button>
             </div>
           </div>
+        </div>
+
+        {/* Welcome Back Message */}
+        <div className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl p-4 mb-6">
+          <p className="text-emerald-800 text-center">
+            <span className="font-semibold">Welcome back!</span> Your wellness journey continues. 
+            Every moment you spend here is an investment in your well-being. 🌱
+          </p>
         </div>
 
         {/* Menu Grid */}
