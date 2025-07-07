@@ -6,7 +6,7 @@ declare global {
   }
 }
 
-export const GA_MEASUREMENT_ID = 'GA_MEASUREMENT_ID'; // Replace with your actual Measurement ID
+export const GA_MEASUREMENT_ID = 'G-495897016'; // Replace with your actual Measurement ID
 
 // Initialize Google Analytics
 export const initGA = (measurementId: string = GA_MEASUREMENT_ID) => {
