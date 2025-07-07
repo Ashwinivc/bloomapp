@@ -1,5 +1,6 @@
-import React, { createContext, useContext, useReducer, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { AppState, User, MoodEntry, Habit, JournalEntry, ChatMessage, Theme } from '../types';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 interface AppContextType {
   state: AppState;
@@ -25,7 +26,8 @@ type Action =
   | { type: 'ADD_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'SET_THEME'; payload: Theme }
   | { type: 'UPDATE_BLOOM_SCORE' }
-  | { type: 'RESET_APP_STATE' };
+  | { type: 'RESET_APP_STATE' }
+  | { type: 'LOAD_STATE'; payload: AppState };
 
 const initialState: AppState = {
   user: null,
@@ -44,6 +46,8 @@ const initialState: AppState = {
 
 function appReducer(state: AppState, action: Action): AppState {
   switch (action.type) {
+    case 'LOAD_STATE':
+      return action.payload;
     case 'SET_USER':
       return { ...state, user: action.payload };
     case 'SET_CURRENT_SCREEN':
@@ -92,7 +96,20 @@ function appReducer(state: AppState, action: Action): AppState {
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [state, dispatch] = useReducer(appReducer, initialState);
+  const [storedState, setStoredState] = useLocalStorage<AppState>('dailyBloomAppState', initialState);
+  const [state, dispatch] = useReducer(appReducer, storedState);
+
+  // Load stored state on mount
+  useEffect(() => {
+    if (storedState && storedState !== initialState) {
+      dispatch({ type: 'LOAD_STATE', payload: storedState });
+    }
+  }, []);
+
+  // Save state to localStorage whenever it changes
+  useEffect(() => {
+    setStoredState(state);
+  }, [state, setStoredState]);
 
   const setUser = (user: User) => dispatch({ type: 'SET_USER', payload: user });
   const setCurrentScreen = (screen: string) => dispatch({ type: 'SET_CURRENT_SCREEN', payload: screen });
@@ -102,7 +119,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   const addChatMessage = (message: ChatMessage) => dispatch({ type: 'ADD_CHAT_MESSAGE', payload: message });
   const setTheme = (theme: Theme) => dispatch({ type: 'SET_THEME', payload: theme });
   const updateBloomScore = () => dispatch({ type: 'UPDATE_BLOOM_SCORE' });
-  const resetAppState = () => dispatch({ type: 'RESET_APP_STATE' });
+  
+  const resetAppState = () => {
+    dispatch({ type: 'RESET_APP_STATE' });
+    setStoredState(initialState);
+  };
 
   return (
     <AppContext.Provider

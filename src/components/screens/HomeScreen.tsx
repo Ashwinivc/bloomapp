@@ -84,7 +84,7 @@ export function HomeScreen() {
         {/* Welcome Back Message */}
         <div className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl p-4 mb-6">
           <p className="text-emerald-800 text-center">
-            <span className="font-semibold">Welcome back!</span> Your wellness journey continues. 
+            <span className="font-semibold">Welcome back!</span> Your progress is automatically saved locally on your device. 
             Every moment you spend here is an investment in your well-being. 🌱
           </p>
         </div>
