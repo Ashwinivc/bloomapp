@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
 import { AppState, User, MoodEntry, Habit, JournalEntry, ChatMessage, Theme } from '../types';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 import { trackPageView, trackWellnessEvent } from '../utils/analytics';
 import { moodEmojis, getTodayDateString, isWithinLastNDays } from '../utils/constants';
 
@@ -28,8 +27,7 @@ type Action =
   | { type: 'ADD_CHAT_MESSAGE'; payload: ChatMessage }
   | { type: 'SET_THEME'; payload: Theme }
   | { type: 'UPDATE_BLOOM_SCORE' }
-  | { type: 'RESET_APP_STATE' }
-  | { type: 'LOAD_STATE'; payload: AppState };
+  | { type: 'RESET_APP_STATE' };
 
 const initialState: AppState = {
   user: null,
@@ -47,10 +45,39 @@ const initialState: AppState = {
   selectedTheme: 'calm-forest',
 };
 
+// Initialize state from localStorage with daily reset logic
+function init(initialState: AppState): AppState {
+  try {
+    const storedData = window.localStorage.getItem('dailyBloomAppState');
+    if (!storedData) {
+      return initialState;
+    }
+
+    const storedState: AppState = JSON.parse(storedData);
+    const today = getTodayDateString();
+
+    // Check if it's a new day and reset daily progress
+    if (!storedState.lastActiveDate || storedState.lastActiveDate !== today) {
+      return {
+        ...storedState,
+        lastActiveDate: today,
+        habits: storedState.habits.map(habit => ({
+          ...habit,
+          completed: false, // Reset daily completion status
+          // Keep streak and lastCompletedDate intact for historical tracking
+        })),
+      };
+    }
+
+    return storedState;
+  } catch (error) {
+    console.error('Error loading state from localStorage:', error);
+    return initialState;
+  }
+}
+
 function appReducer(state: AppState, action: Action): AppState {
   switch (action.type) {
-    case 'LOAD_STATE':
-      return action.payload;
     case 'SET_USER':
       return { ...state, user: action.payload };
     case 'SET_CURRENT_SCREEN':
@@ -58,7 +85,6 @@ function appReducer(state: AppState, action: Action): AppState {
     case 'ADD_MOOD_ENTRY':
       return { ...state, moodEntries: [...state.moodEntries, action.payload] };
     case 'TOGGLE_HABIT':
-      const today = getTodayDateString();
       return {
         ...state,
         habits: state.habits.map(habit =>
@@ -125,36 +151,16 @@ function appReducer(state: AppState, action: Action): AppState {
 }
 
 export function AppProvider({ children }: { children: ReactNode }) {
-  const [storedState, setStoredState] = useLocalStorage<AppState>('dailyBloomAppState', initialState);
-  const [state, dispatch] = useReducer(appReducer, storedState);
-
-  // Load stored state on mount
-  useEffect(() => {
-    if (storedState && storedState !== initialState) {
-      const today = getTodayDateString();
-      let loadedState = { ...storedState };
-      
-      // Check if it's a new day and reset daily progress
-      if (!storedState.lastActiveDate || storedState.lastActiveDate !== today) {
-        loadedState = {
-          ...storedState,
-          lastActiveDate: today,
-          habits: storedState.habits.map(habit => ({
-            ...habit,
-            completed: false, // Reset daily completion status
-            // Keep streak and lastCompletedDate intact for historical tracking
-          })),
-        };
-      }
-      
-      dispatch({ type: 'LOAD_STATE', payload: loadedState });
-    }
-  }, [storedState]);
+  const [state, dispatch] = useReducer(appReducer, initialState, init);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {
-    setStoredState(state);
-  }, [state, setStoredState]);
+    try {
+      window.localStorage.setItem('dailyBloomAppState', JSON.stringify(state));
+    } catch (error) {
+      console.error('Error saving state to localStorage:', error);
+    }
+  }, [state]);
 
   const setUser = (user: User) => dispatch({ type: 'SET_USER', payload: user });
   
@@ -197,7 +203,11 @@ export function AppProvider({ children }: { children: ReactNode }) {
   
   const resetAppState = () => {
     dispatch({ type: 'RESET_APP_STATE' });
-    setStoredState(initialState);
+    try {
+      window.localStorage.removeItem('dailyBloomAppState');
+    } catch (error) {
+      console.error('Error removing state from localStorage:', error);
+    }
   };
 
   return (
