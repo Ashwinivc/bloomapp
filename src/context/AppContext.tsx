@@ -33,6 +33,7 @@ const initialState: AppState = {
   user: null,
   currentScreen: 'login',
   lastActiveDate: getTodayDateString(),
+  dailyBloomScores: {},
   moodEntries: [],
   habits: [
     { id: '1', name: 'Drink Water', completed: false, streak: 0, lastCompletedDate: undefined },
@@ -56,11 +57,22 @@ function init(initialState: AppState): AppState {
     const storedState: AppState = JSON.parse(storedData);
     const today = getTodayDateString();
 
+    // Clean up old daily bloom scores (keep only last 7 days)
+    const cleanedDailyScores: { [date: string]: BloomScore } = {};
+    if (storedState.dailyBloomScores) {
+      Object.keys(storedState.dailyBloomScores).forEach(date => {
+        if (isWithinLastNDays(date + 'T00:00:00.000Z', 7)) {
+          cleanedDailyScores[date] = storedState.dailyBloomScores![date];
+        }
+      });
+    }
+
     // Check if it's a new day and reset daily progress
     if (!storedState.lastActiveDate || storedState.lastActiveDate !== today) {
       return {
         ...storedState,
         lastActiveDate: today,
+        dailyBloomScores: cleanedDailyScores,
         habits: storedState.habits.map(habit => ({
           ...habit,
           completed: false, // Reset daily completion status
@@ -69,7 +81,10 @@ function init(initialState: AppState): AppState {
       };
     }
 
-    return storedState;
+    return {
+      ...storedState,
+      dailyBloomScores: cleanedDailyScores,
+    };
   } catch (error) {
     console.error('Error loading state from localStorage:', error);
     return initialState;
@@ -134,14 +149,24 @@ function appReducer(state: AppState, action: Action): AppState {
       // Calculate overall score
       const overall = (moodScore + habitScore + journalScore) / 3;
       
+      const newBloomScore = {
+        mood: Math.round(moodScore),
+        habits: Math.round(habitScore),
+        reflection: Math.round(journalScore),
+        overall: Math.round(overall),
+      };
+
+      // Store today's bloom score in daily history
+      const today = getTodayDateString();
+      const updatedDailyScores = {
+        ...state.dailyBloomScores,
+        [today]: newBloomScore,
+      };
+
       return {
         ...state,
-        bloomScore: {
-          mood: Math.round(moodScore),
-          habits: Math.round(habitScore),
-          reflection: Math.round(journalScore),
-          overall: Math.round(overall),
-        },
+        bloomScore: newBloomScore,
+        dailyBloomScores: updatedDailyScores,
       };
     case 'RESET_APP_STATE':
       return initialState;

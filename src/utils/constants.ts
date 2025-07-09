@@ -41,3 +41,30 @@ export const isWithinLastNDays = (dateString: string, days: number): boolean => 
   nDaysAgo.setDate(nDaysAgo.getDate() - days);
   return date >= nDaysAgo;
 };
+
+// Utility function to get the last N days as date strings
+export const getLastNDays = (days: number): string[] => {
+  const dates: string[] = [];
+  for (let i = days - 1; i >= 0; i--) {
+    const date = new Date();
+    date.setDate(date.getDate() - i);
+    dates.push(date.toISOString().split('T')[0]);
+  }
+  return dates;
+};
+
+// Utility function to format date for display
+export const formatDateForDisplay = (dateString: string): string => {
+  const date = new Date(dateString + 'T00:00:00');
+  const today = new Date();
+  const yesterday = new Date();
+  yesterday.setDate(yesterday.getDate() - 1);
+  
+  if (date.toDateString() === today.toDateString()) {
+    return 'Today';
+  } else if (date.toDateString() === yesterday.toDateString()) {
+    return 'Yesterday';
+  } else {
+    return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  }
+};

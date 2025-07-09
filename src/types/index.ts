@@ -44,6 +44,7 @@ export interface AppState {
   user: User | null;
   currentScreen: string;
   lastActiveDate?: string;
+  dailyBloomScores?: { [date: string]: BloomScore };
   moodEntries: MoodEntry[];
   habits: Habit[];
   journalEntries: JournalEntry[];
