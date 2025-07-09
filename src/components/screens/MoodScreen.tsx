@@ -1,25 +1,7 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Heart } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
-
-const moodEmojis = [
-  { emoji: '😊', label: 'Happy', value: 5 },
-  { emoji: '😌', label: 'Calm', value: 4 },
-  { emoji: '😐', label: 'Neutral', value: 3 },
-  { emoji: '😔', label: 'Sad', value: 2 },
-  { emoji: '😰', label: 'Anxious', value: 1 },
-  { emoji: '😴', label: 'Tired', value: 2 },
-  { emoji: '🤗', label: 'Grateful', value: 5 },
-  { emoji: '😤', label: 'Frustrated', value: 2 },
-];
-
-const moodResponses = {
-  5: "That's wonderful! Your positive energy is shining bright today. Keep spreading those good vibes! ✨",
-  4: "Beautiful! A calm mind is a powerful mind. Take a moment to appreciate this peaceful feeling. 🌸",
-  3: "Neutral days are perfectly okay. Sometimes we just need to be present and that's enough. 🌿",
-  2: "I hear you. It's okay to have difficult moments. Remember, this feeling is temporary and you're stronger than you know. 💙",
-  1: "Thank you for sharing how you're feeling. Take some deep breaths and be gentle with yourself today. You're not alone. 🤗",
-};
+import { moodEmojis, moodResponses } from '../../utils/constants';
 
 export function MoodScreen() {
   const [selectedMood, setSelectedMood] = useState<string | null>(null);

@@ -2,6 +2,7 @@ import React, { createContext, useContext, useReducer, useEffect, ReactNode } fr
 import { AppState, User, MoodEntry, Habit, JournalEntry, ChatMessage, Theme } from '../types';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { trackPageView, trackWellnessEvent } from '../utils/analytics';
+import { moodEmojis, getTodayDateString, isWithinLastNDays } from '../utils/constants';
 
 interface AppContextType {
   state: AppState;
@@ -33,11 +34,12 @@ type Action =
 const initialState: AppState = {
   user: null,
   currentScreen: 'login',
+  lastActiveDate: getTodayDateString(),
   moodEntries: [],
   habits: [
-    { id: '1', name: 'Drink Water', completed: false, streak: 0 },
-    { id: '2', name: 'Stretch', completed: false, streak: 0 },
-    { id: '3', name: 'Journal', completed: false, streak: 0 },
+    { id: '1', name: 'Drink Water', completed: false, streak: 0, lastCompletedDate: undefined },
+    { id: '2', name: 'Stretch', completed: false, streak: 0, lastCompletedDate: undefined },
+    { id: '3', name: 'Journal', completed: false, streak: 0, lastCompletedDate: undefined },
   ],
   journalEntries: [],
   bloomScore: { mood: 0, habits: 0, reflection: 0, overall: 0 },
@@ -56,11 +58,17 @@ function appReducer(state: AppState, action: Action): AppState {
     case 'ADD_MOOD_ENTRY':
       return { ...state, moodEntries: [...state.moodEntries, action.payload] };
     case 'TOGGLE_HABIT':
+      const today = getTodayDateString();
       return {
         ...state,
         habits: state.habits.map(habit =>
           habit.id === action.payload
-            ? { ...habit, completed: !habit.completed, streak: habit.completed ? habit.streak : habit.streak + 1 }
+            ? { 
+                ...habit, 
+                completed: !habit.completed,
+                lastCompletedDate: !habit.completed ? new Date().toISOString() : undefined,
+                streak: !habit.completed ? habit.streak + 1 : 0
+              }
             : habit
         ),
       };
@@ -71,19 +79,39 @@ function appReducer(state: AppState, action: Action): AppState {
     case 'SET_THEME':
       return { ...state, selectedTheme: action.payload };
     case 'UPDATE_BLOOM_SCORE':
+      // Calculate habit score based on today's completed habits
       const completedHabits = state.habits.filter(h => h.completed).length;
       const totalHabits = state.habits.length;
-      const recentMood = state.moodEntries.slice(-7);
-      const avgMood = recentMood.length > 0 ? (recentMood.length / 7) * 100 : 0;
-      const journalScore = state.journalEntries.length > 0 ? Math.min(state.journalEntries.length * 10, 100) : 0;
-      
       const habitScore = totalHabits > 0 ? (completedHabits / totalHabits) * 100 : 0;
-      const overall = (avgMood + habitScore + journalScore) / 3;
+      
+      // Calculate mood score based on last 7 days
+      const recentMoodEntries = state.moodEntries.filter(entry => 
+        isWithinLastNDays(entry.date, 7)
+      );
+      
+      let avgMoodValue = 0;
+      if (recentMoodEntries.length > 0) {
+        const totalMoodValue = recentMoodEntries.reduce((sum, entry) => {
+          const moodData = moodEmojis.find(mood => mood.emoji === entry.emoji);
+          return sum + (moodData?.value || 3); // Default to neutral if not found
+        }, 0);
+        avgMoodValue = totalMoodValue / recentMoodEntries.length;
+      }
+      const moodScore = avgMoodValue > 0 ? (avgMoodValue / 5) * 100 : 0;
+      
+      // Calculate reflection score based on journal entries in last 7 days
+      const recentJournalEntries = state.journalEntries.filter(entry => 
+        isWithinLastNDays(entry.date, 7)
+      );
+      const journalScore = Math.min(recentJournalEntries.length * 20, 100);
+      
+      // Calculate overall score
+      const overall = (moodScore + habitScore + journalScore) / 3;
       
       return {
         ...state,
         bloomScore: {
-          mood: Math.round(avgMood),
+          mood: Math.round(moodScore),
           habits: Math.round(habitScore),
           reflection: Math.round(journalScore),
           overall: Math.round(overall),
@@ -103,9 +131,25 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // Load stored state on mount
   useEffect(() => {
     if (storedState && storedState !== initialState) {
-      dispatch({ type: 'LOAD_STATE', payload: storedState });
+      const today = getTodayDateString();
+      let loadedState = { ...storedState };
+      
+      // Check if it's a new day and reset daily progress
+      if (!storedState.lastActiveDate || storedState.lastActiveDate !== today) {
+        loadedState = {
+          ...storedState,
+          lastActiveDate: today,
+          habits: storedState.habits.map(habit => ({
+            ...habit,
+            completed: false, // Reset daily completion status
+            // Keep streak and lastCompletedDate intact for historical tracking
+          })),
+        };
+      }
+      
+      dispatch({ type: 'LOAD_STATE', payload: loadedState });
     }
-  }, []);
+  }, [storedState]);
 
   // Save state to localStorage whenever it changes
   useEffect(() => {

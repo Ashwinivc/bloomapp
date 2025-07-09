@@ -110,21 +110,35 @@ export function HomeScreen() {
 
         {/* Quick Stats */}
         <div className="mt-6 bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6">
-          <h3 className="font-semibold text-gray-800 mb-4">Today's Progress</h3>
+          <h3 className="font-semibold text-gray-800 mb-4">Recent Activity</h3>
           <div className="grid grid-cols-3 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-pink-600">{state.moodEntries.length}</div>
-              <div className="text-sm text-gray-600">Mood Entries</div>
+              <div className="text-2xl font-bold text-pink-600">
+                {state.moodEntries.filter(entry => {
+                  const entryDate = new Date(entry.date);
+                  const weekAgo = new Date();
+                  weekAgo.setDate(weekAgo.getDate() - 7);
+                  return entryDate >= weekAgo;
+                }).length}
+              </div>
+              <div className="text-sm text-gray-600">Mood Entries (7d)</div>
             </div>
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600">
                 {state.habits.filter(h => h.completed).length}/{state.habits.length}
               </div>
-              <div className="text-sm text-gray-600">Habits Done</div>
+              <div className="text-sm text-gray-600">Habits Today</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">{state.journalEntries.length}</div>
-              <div className="text-sm text-gray-600">Journal Entries</div>
+              <div className="text-2xl font-bold text-blue-600">
+                {state.journalEntries.filter(entry => {
+                  const entryDate = new Date(entry.date);
+                  const weekAgo = new Date();
+                  weekAgo.setDate(weekAgo.getDate() - 7);
+                  return entryDate >= weekAgo;
+                }).length}
+              </div>
+              <div className="text-sm text-gray-600">Journal Entries (7d)</div>
             </div>
           </div>
         </div>

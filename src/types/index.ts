@@ -15,6 +15,7 @@ export interface Habit {
   name: string;
   completed: boolean;
   streak: number;
+  lastCompletedDate?: string;
 }
 
 export interface JournalEntry {
@@ -42,6 +43,7 @@ export type Theme = 'calm-forest' | 'floral-bliss' | 'sunrise-glow';
 export interface AppState {
   user: User | null;
   currentScreen: string;
+  lastActiveDate?: string;
   moodEntries: MoodEntry[];
   habits: Habit[];
   journalEntries: JournalEntry[];

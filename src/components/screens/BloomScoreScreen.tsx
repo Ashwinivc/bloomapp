@@ -41,31 +41,31 @@ export function BloomScoreScreen() {
     
     // Habit-specific encouragement
     if (habits < 30) {
-      message += "Small steps create big changes! Even one completed habit today is a victory worth celebrating. ";
+      message += "Small steps create big changes! Building consistent daily habits is a journey worth celebrating. ";
     } else if (habits < 60) {
-      message += "Your habit consistency is growing beautifully! Keep nurturing these positive routines. ";
+      message += "Your daily habit consistency is growing beautifully! Keep nurturing these positive routines. ";
     } else if (habits < 80) {
-      message += "Excellent habit momentum! You're building a strong foundation for lasting wellness. ";
+      message += "Excellent daily habit momentum! You're building a strong foundation for lasting wellness. ";
     } else {
-      message += "Outstanding habit mastery! Your consistency is truly inspiring and transformative. ";
+      message += "Outstanding daily habit mastery! Your consistency is truly inspiring and transformative. ";
     }
     
     // Mood-specific encouragement
     if (mood < 40) {
-      message += "Remember, difficult emotions are temporary visitors—acknowledge them with kindness. ";
+      message += "Your recent mood patterns show some challenges—remember, difficult emotions are temporary visitors. ";
     } else if (mood < 70) {
-      message += "Your emotional awareness is a superpower that guides your growth. ";
+      message += "Your recent emotional awareness and mood tracking is a superpower that guides your growth. ";
     } else {
-      message += "Your positive energy radiates through your mood tracking! ";
+      message += "Your recent positive energy radiates through your consistent mood tracking! ";
     }
     
     // Reflection-specific encouragement
     if (reflection < 40) {
-      message += "Consider adding journaling to deepen your self-discovery journey. ";
+      message += "Consider adding more regular journaling to deepen your self-discovery journey. ";
     } else if (reflection < 70) {
-      message += "Your thoughtful reflections are nurturing profound personal insights. ";
+      message += "Your recent thoughtful reflections are nurturing profound personal insights. ";
     } else {
-      message += "Your commitment to self-reflection is creating beautiful inner wisdom. ";
+      message += "Your consistent commitment to self-reflection is creating beautiful inner wisdom. ";
     }
     
     // Overall encouragement
@@ -182,8 +182,8 @@ export function BloomScoreScreen() {
           
           <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-100">
             <p className="text-purple-800 text-sm leading-relaxed">
-              <strong>Your Daily Performance:</strong> This score reflects your commitment to self-care across mood awareness, 
-              habit consistency, and mindful reflection. Each element strengthens your foundation for lasting wellness. 
+              <strong>Your Weekly Wellness Journey:</strong> This score reflects your recent commitment to self-care across mood awareness (last 7 days), 
+              daily habit consistency (today), and mindful reflection (last 7 days). Each element strengthens your foundation for lasting wellness. 
               Remember, progress isn't about perfection—it\'s about showing up for yourself with compassion and intention. 
               Every entry, every completed habit, every moment of reflection is a victory worth celebrating! 🌟
             </p>
@@ -225,7 +225,7 @@ export function BloomScoreScreen() {
             <div className="space-y-2">
               <h4 className="font-medium text-purple-700">Daily Habits:</h4>
               <ul className="text-sm text-purple-600 space-y-1">
-                <li>• Complete your daily habit checklist</li>
+                <li>• Complete your daily habit checklist each day</li>
                 <li>• Stay consistent with small actions</li>
                 <li>• Celebrate small wins</li>
               </ul>
@@ -233,8 +233,8 @@ export function BloomScoreScreen() {
             <div className="space-y-2">
               <h4 className="font-medium text-purple-700">Mindful Practices:</h4>
               <ul className="text-sm text-purple-600 space-y-1">
-                <li>• Track your mood regularly</li>
-                <li>• Write in your journal daily</li>
+                <li>• Track your mood regularly throughout the week</li>
+                <li>• Write in your journal consistently</li>
                 <li>• Practice gratitude and reflection</li>
               </ul>
             </div>
