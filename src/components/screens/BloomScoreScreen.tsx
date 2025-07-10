@@ -4,6 +4,7 @@ import { useApp } from '../../context/AppContext';
 import { useTextToSpeech } from '../../hooks/useTextToSpeech';
 import { trackWellnessEvent } from '../../utils/analytics';
 import { getLastNDays, formatDateForDisplay } from '../../utils/constants';
+import { getLastNDays, formatDateForDisplay } from '../../utils/constants';
 
 export function BloomScoreScreen() {
   const { state, setCurrentScreen } = useApp();
@@ -217,6 +218,56 @@ export function BloomScoreScreen() {
               </div>
             );
           })}
+        </div>
+
+        {/* 7-Day Trend */}
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-8">
+          <div className="flex items-center mb-6">
+            <Calendar className="w-8 h-8 text-indigo-500 mr-3" />
+            <h2 className="text-2xl font-bold text-gray-800">7-Day Bloom Score Trend</h2>
+          </div>
+          
+          <div className="grid grid-cols-7 gap-2 md:gap-4">
+            {getLastNDays(7).map((date, index) => {
+              const dayScore = state.dailyBloomScores?.[date]?.overall || 0;
+              const isToday = date === new Date().toISOString().split('T')[0];
+              
+              return (
+                <div key={date} className="text-center">
+                  <div className="text-xs text-gray-500 mb-2 font-medium">
+                    {formatDateForDisplay(date)}
+                  </div>
+                  
+                  <div className={`relative w-full h-24 bg-gray-100 rounded-lg overflow-hidden ${isToday ? 'ring-2 ring-purple-400' : ''}`}>
+                    <div 
+                      className={`absolute bottom-0 w-full bg-gradient-to-t ${getScoreGradient(dayScore)} transition-all duration-1000`}
+                      style={{ height: `${dayScore}%` }}
+                    ></div>
+                    
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className={`text-sm font-bold ${dayScore > 50 ? 'text-white' : 'text-gray-700'}`}>
+                        {dayScore}%
+                      </span>
+                    </div>
+                  </div>
+                  
+                  {isToday && (
+                    <div className="text-xs text-purple-600 font-medium mt-1">
+                      Current
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+          
+          <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
+            <p className="text-indigo-800 text-sm leading-relaxed">
+              <strong>📊 Your Weekly Journey:</strong> This chart shows your daily Bloom Score over the past 7 days. 
+              Each bar represents your overall wellness score for that day, combining mood tracking, habit completion, 
+              and reflection activities. Watch your patterns and celebrate your progress! Consistency over perfection is the key to lasting wellness.
+            </p>
+          </div>
         </div>
 
         {/* 7-Day Trend */}

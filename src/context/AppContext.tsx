@@ -56,6 +56,9 @@ function init(initialState: AppState): AppState {
 
     const storedState: AppState = JSON.parse(storedData);
     const today = getTodayDateString();
+    const yesterday = new Date();
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yesterdayString = yesterday.toISOString().split('T')[0];
 
     // Clean up old daily bloom scores (keep only last 7 days)
     const cleanedDailyScores: { [date: string]: BloomScore } = {};
@@ -69,15 +72,38 @@ function init(initialState: AppState): AppState {
 
     // Check if it's a new day and reset daily progress
     if (!storedState.lastActiveDate || storedState.lastActiveDate !== today) {
+      // Save previous day's bloom score if it exists and we have a valid last active date
+      if (storedState.lastActiveDate && storedState.bloomScore && storedState.lastActiveDate !== today) {
+        cleanedDailyScores[storedState.lastActiveDate] = storedState.bloomScore;
+      }
+
+      // Update habit streaks based on completion history
+      const updatedHabits = storedState.habits.map(habit => {
+        let newStreak = 0;
+        
+        // If habit was completed yesterday, carry over the streak
+        if (habit.lastCompletedDate) {
+          const lastCompletedDate = new Date(habit.lastCompletedDate).toISOString().split('T')[0];
+          if (lastCompletedDate === yesterdayString) {
+            newStreak = habit.streak; // Carry over streak from yesterday
+          } else if (lastCompletedDate === today) {
+            newStreak = habit.streak; // Keep current streak if completed today
+          }
+          // If last completed was before yesterday, streak resets to 0
+        }
+
+        return {
+          ...habit,
+          completed: false, // Reset daily completion status
+          streak: newStreak,
+        };
+      });
+
       return {
         ...storedState,
         lastActiveDate: today,
         dailyBloomScores: cleanedDailyScores,
-        habits: storedState.habits.map(habit => ({
-          ...habit,
-          completed: false, // Reset daily completion status
-          // Keep streak and lastCompletedDate intact for historical tracking
-        })),
+        habits: updatedHabits,
       };
     }
 
@@ -107,7 +133,7 @@ function appReducer(state: AppState, action: Action): AppState {
             ? { 
                 ...habit, 
                 completed: !habit.completed,
-                lastCompletedDate: !habit.completed ? new Date().toISOString() : undefined,
+                lastCompletedDate: !habit.completed ? new Date().toISOString() : habit.lastCompletedDate,
                 streak: !habit.completed ? habit.streak + 1 : 0
               }
             : habit
