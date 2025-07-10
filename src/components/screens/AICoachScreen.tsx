@@ -107,7 +107,7 @@ export function AICoachScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <MessageCircle className="w-8 h-8 text-teal-500 mr-3" />
+            <MessageCircle className="w-8 h-8 text-teal-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">🤖 Chat with your AI Coach</h1>
           </div>
         </div>
@@ -118,7 +118,7 @@ export function AICoachScreen() {
           <div className="flex-1 p-6 overflow-y-auto">
             {state.chatMessages.length === 0 && (
               <div className="text-center py-12">
-                <Bot className="w-16 h-16 text-teal-500 mx-auto mb-4" />
+                <Bot className="w-16 h-16 text-teal-400 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-800 mb-2">
                   Welcome to your AI Wellness Coach!
                 </h3>
@@ -133,7 +133,7 @@ export function AICoachScreen() {
                     <button
                       key={index}
                       onClick={() => handleQuickPrompt(prompt)}
-                      className="p-3 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl hover:from-teal-100 hover:to-cyan-100 transition-all duration-200 text-sm text-teal-700 border border-teal-200"
+                      className="p-3 bg-gradient-to-r from-teal-50 to-cyan-50 rounded-xl hover:from-teal-100 hover:to-cyan-100 transition-all duration-200 text-sm text-teal-600 border border-teal-200"
                     >
                       {prompt}
                     </button>
@@ -150,11 +150,11 @@ export function AICoachScreen() {
                 <div className={`flex items-start max-w-xs lg:max-w-md ${msg.isUser ? 'flex-row-reverse' : 'flex-row'}`}>
                   <div className={`flex-shrink-0 ${msg.isUser ? 'ml-3' : 'mr-3'}`}>
                     {msg.isUser ? (
-                      <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-sky-400 rounded-full flex items-center justify-center">
                         <User className="w-5 h-5 text-white" />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center">
+                      <div className="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center">
                         <Bot className="w-5 h-5 text-white" />
                       </div>
                     )}
@@ -162,7 +162,7 @@ export function AICoachScreen() {
                   <div
                     className={`px-4 py-3 rounded-2xl ${
                       msg.isUser
-                        ? 'bg-blue-500 text-white'
+                        ? 'bg-sky-400 text-white'
                         : 'bg-gray-100 text-gray-800'
                     }`}
                   >
@@ -175,7 +175,7 @@ export function AICoachScreen() {
             {isTyping && (
               <div className="flex justify-start mb-4">
                 <div className="flex items-start">
-                  <div className="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center mr-3">
+                  <div className="w-8 h-8 bg-teal-400 rounded-full flex items-center justify-center mr-3">
                     <Bot className="w-5 h-5 text-white" />
                   </div>
                   <div className="bg-gray-100 px-4 py-3 rounded-2xl">
@@ -201,13 +201,13 @@ export function AICoachScreen() {
                 onChange={(e) => setMessage(e.target.value)}
                 onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
                 placeholder="Type your message here..."
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                className="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-400 focus:border-transparent"
                 disabled={isTyping}
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!message.trim() || isTyping}
-                className="px-6 py-3 bg-teal-500 text-white rounded-xl hover:bg-teal-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                className="px-6 py-3 bg-teal-400 text-white rounded-xl hover:bg-teal-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
               >
                 <Send className="w-5 h-5" />
               </button>

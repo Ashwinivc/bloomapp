@@ -8,7 +8,7 @@ const natureSounds = [
     title: 'Gentle Rainfall',
     description: 'Soft rain drops for deep relaxation',
     icon: '🌧️',
-    color: 'from-blue-400 to-indigo-500',
+    color: 'from-sky-200 to-blue-300',
     image: 'https://images.pexels.com/photos/1463917/pexels-photo-1463917.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
@@ -16,7 +16,7 @@ const natureSounds = [
     title: 'Ocean Waves',
     description: 'Rhythmic waves washing ashore',
     icon: '🌊',
-    color: 'from-cyan-400 to-blue-500',
+    color: 'from-cyan-200 to-blue-300',
     image: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
@@ -24,7 +24,7 @@ const natureSounds = [
     title: 'Forest Birds',
     description: 'Peaceful bird songs in the woods',
     icon: '🐦',
-    color: 'from-green-400 to-emerald-500',
+    color: 'from-emerald-200 to-green-300',
     image: 'https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
@@ -32,7 +32,7 @@ const natureSounds = [
     title: 'Gentle Breeze',
     description: 'Soft wind through the trees',
     icon: '🍃',
-    color: 'from-emerald-400 to-green-500',
+    color: 'from-emerald-200 to-teal-300',
     image: 'https://images.pexels.com/photos/1671325/pexels-photo-1671325.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
@@ -40,7 +40,7 @@ const natureSounds = [
     title: 'Babbling Brook',
     description: 'Gentle water flowing over rocks',
     icon: '💧',
-    color: 'from-blue-300 to-cyan-400',
+    color: 'from-sky-200 to-cyan-300',
     image: 'https://images.pexels.com/photos/1001682/pexels-photo-1001682.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
   {
@@ -48,7 +48,7 @@ const natureSounds = [
     title: 'Distant Thunder',
     description: 'Soft rumbling for deep sleep',
     icon: '⛈️',
-    color: 'from-gray-400 to-slate-500',
+    color: 'from-gray-300 to-slate-400',
     image: 'https://images.pexels.com/photos/1463917/pexels-photo-1463917.jpeg?auto=compress&cs=tinysrgb&w=600',
   },
 ];
@@ -188,24 +188,24 @@ export function NatureSoundsScreen() {
         </div>
 
         {/* Benefits Section */}
-        <div className="mt-8 bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6">
-          <h3 className="font-semibold text-green-800 mb-4 text-xl">🌱 Benefits of Nature Sounds</h3>
+        <div className="mt-8 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6">
+          <h3 className="font-semibold text-emerald-700 mb-4 text-xl">🌱 Benefits of Nature Sounds</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div>
-              <h4 className="font-medium text-green-700 mb-2">Stress Reduction</h4>
-              <p className="text-sm text-green-600">
+              <h4 className="font-medium text-emerald-600 mb-2">Stress Reduction</h4>
+              <p className="text-sm text-emerald-500">
                 Natural sounds activate the parasympathetic nervous system, promoting relaxation and reducing cortisol levels.
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-green-700 mb-2">Better Sleep</h4>
-              <p className="text-sm text-green-600">
+              <h4 className="font-medium text-emerald-600 mb-2">Better Sleep</h4>
+              <p className="text-sm text-emerald-500">
                 Consistent nature sounds can mask disruptive noises and create a peaceful environment for deeper sleep.
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-green-700 mb-2">Enhanced Focus</h4>
-              <p className="text-sm text-green-600">
+              <h4 className="font-medium text-emerald-600 mb-2">Enhanced Focus</h4>
+              <p className="text-sm text-emerald-500">
                 Gentle nature sounds can improve concentration and cognitive performance by reducing mental fatigue.
               </p>
             </div>

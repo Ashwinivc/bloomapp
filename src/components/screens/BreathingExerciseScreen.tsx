@@ -66,11 +66,11 @@ export function BreathingExerciseScreen() {
 
   const getPhaseColor = (phase: string) => {
     switch (phase) {
-      case 'Inhale': return 'from-blue-400 to-cyan-500';
-      case 'Hold': return 'from-purple-400 to-indigo-500';
-      case 'Exhale': return 'from-green-400 to-emerald-500';
+      case 'Inhale': return 'from-sky-200 to-blue-300';
+      case 'Hold': return 'from-violet-200 to-purple-300';
+      case 'Exhale': return 'from-emerald-200 to-green-300';
       case 'Rest': return 'from-gray-400 to-gray-500';
-      default: return 'from-blue-400 to-cyan-500';
+      default: return 'from-sky-200 to-blue-300';
     }
   };
 
@@ -141,8 +141,8 @@ export function BreathingExerciseScreen() {
                 onClick={handleStartPause}
                 className={`flex items-center px-6 py-3 rounded-xl font-semibold transition-all duration-200 ${
                   isActive 
-                    ? 'bg-red-500 hover:bg-red-600 text-white' 
-                    : 'bg-green-500 hover:bg-green-600 text-white'
+                    ? 'bg-rose-400 hover:bg-rose-500 text-white' 
+                    : 'bg-emerald-400 hover:bg-emerald-500 text-white'
                 }`}
               >
                 {isActive ? (
@@ -160,7 +160,7 @@ export function BreathingExerciseScreen() {
               
               <button
                 onClick={handleReset}
-                className="flex items-center px-6 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-xl font-semibold transition-all duration-200"
+                className="flex items-center px-6 py-3 bg-gray-400 hover:bg-gray-500 text-white rounded-xl font-semibold transition-all duration-200"
               >
                 <RotateCcw className="w-5 h-5 mr-2" />
                 Reset
@@ -170,9 +170,9 @@ export function BreathingExerciseScreen() {
         </div>
 
         {/* Instructions */}
-        <div className="bg-gradient-to-r from-blue-100 to-cyan-100 rounded-2xl p-6">
-          <h3 className="font-semibold text-blue-800 mb-4">🧘‍♀️ How to Practice</h3>
-          <div className="space-y-3 text-sm text-blue-700">
+        <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-6">
+          <h3 className="font-semibold text-sky-700 mb-4">🧘‍♀️ How to Practice</h3>
+          <div className="space-y-3 text-sm text-sky-600">
             <div className="flex items-start">
               <span className="font-medium mr-2">1.</span>
               <span>Sit comfortably with your back straight and shoulders relaxed</span>

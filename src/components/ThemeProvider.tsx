@@ -3,25 +3,25 @@ import { useApp } from '../context/AppContext';
 
 const themes = {
   'calm-forest': {
-    primary: 'from-emerald-400 to-teal-600',
-    secondary: 'from-green-100 to-emerald-100',
-    accent: 'emerald-500',
-    text: 'emerald-800',
-    background: 'emerald-50',
+    primary: 'from-emerald-200 to-teal-300',
+    secondary: 'from-emerald-50 to-teal-50',
+    accent: 'emerald-400',
+    text: 'emerald-700',
+    background: 'emerald-25',
   },
   'floral-bliss': {
-    primary: 'from-pink-400 to-rose-600',
-    secondary: 'from-pink-100 to-rose-100',
-    accent: 'rose-500',
-    text: 'rose-800',
-    background: 'rose-50',
+    primary: 'from-rose-200 to-pink-300',
+    secondary: 'from-rose-50 to-pink-50',
+    accent: 'rose-400',
+    text: 'rose-700',
+    background: 'rose-25',
   },
   'sunrise-glow': {
-    primary: 'from-orange-400 to-amber-600',
-    secondary: 'from-orange-100 to-amber-100',
-    accent: 'amber-500',
-    text: 'amber-800',
-    background: 'amber-50',
+    primary: 'from-amber-200 to-orange-300',
+    secondary: 'from-amber-50 to-orange-50',
+    accent: 'amber-400',
+    text: 'amber-700',
+    background: 'amber-25',
   },
 };
 

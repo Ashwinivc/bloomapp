@@ -125,7 +125,7 @@ export function BloomScoreScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <TrendingUp className="w-8 h-8 text-purple-500 mr-3" />
+            <TrendingUp className="w-8 h-8 text-violet-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">🌿 Your Bloom Score</h1>
           </div>
         </div>
@@ -133,15 +133,15 @@ export function BloomScoreScreen() {
         {/* Overall Score */}
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-8 text-center">
           <div className="flex items-center justify-center mb-4">
-            <Award className="w-12 h-12 text-yellow-500 mr-3" />
+            <Award className="w-12 h-12 text-amber-400 mr-3" />
             <h2 className="text-2xl font-bold text-gray-800">Overall Bloom Score</h2>
             {isSupported && (
               <button
                 onClick={handleSpeakScore}
                 className={`ml-4 p-3 rounded-full transition-all duration-200 ${
                   isSpeaking 
-                    ? 'bg-red-500 hover:bg-red-600 text-white' 
-                    : 'bg-blue-500 hover:bg-blue-600 text-white'
+                    ? 'bg-rose-400 hover:bg-rose-500 text-white' 
+                    : 'bg-sky-400 hover:bg-sky-500 text-white'
                 } shadow-lg hover:shadow-xl`}
                 title={isSpeaking ? 'Stop speaking' : 'Listen to your score'}
               >
@@ -175,14 +175,14 @@ export function BloomScoreScreen() {
           
           {isSupported && (
             <div className="mt-4 p-3 bg-blue-50 rounded-xl border border-blue-200">
-              <p className="text-blue-700 text-sm">
+              <p className="text-sky-600 text-sm">
                 🎧 Click the speaker icon to hear your personalized wellness message with a calming voice
               </p>
             </div>
           )}
           
-          <div className="mt-6 p-4 bg-gradient-to-r from-purple-50 to-indigo-50 rounded-2xl border border-purple-100">
-            <p className="text-purple-800 text-sm leading-relaxed">
+          <div className="mt-6 p-4 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl border border-violet-100">
+            <p className="text-violet-700 text-sm leading-relaxed">
               <strong>Your Weekly Wellness Journey:</strong> This score reflects your recent commitment to self-care across mood awareness (last 7 days), 
               daily habit consistency (today), and mindful reflection (last 7 days). Each element strengthens your foundation for lasting wellness. 
               Remember, progress isn't about perfection—it\'s about showing up for yourself with compassion and intention. 
@@ -198,7 +198,7 @@ export function BloomScoreScreen() {
             return (
               <div key={item.label} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6">
                 <div className="flex items-center mb-4">
-                  <Icon className={`w-8 h-8 text-${item.color}-500 mr-3`} />
+                  <Icon className={`w-8 h-8 text-${item.color}-400 mr-3`} />
                   <h3 className="text-xl font-semibold text-gray-800">{item.label}</h3>
                 </div>
                 
@@ -208,7 +208,7 @@ export function BloomScoreScreen() {
                 
                 <div className="w-full bg-gray-200 rounded-full h-3 mb-3">
                   <div 
-                    className={`bg-${item.color}-500 h-3 rounded-full transition-all duration-1000`}
+                    className={`bg-${item.color}-400 h-3 rounded-full transition-all duration-1000`}
                     style={{ width: `${item.value}%` }}
                   ></div>
                 </div>
@@ -222,7 +222,7 @@ export function BloomScoreScreen() {
         {/* 7-Day Trend */}
         <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-8">
           <div className="flex items-center mb-6">
-            <Calendar className="w-8 h-8 text-indigo-500 mr-3" />
+            <Calendar className="w-8 h-8 text-violet-400 mr-3" />
             <h2 className="text-2xl font-bold text-gray-800">7-Day Bloom Score Trend</h2>
           </div>
           
@@ -251,7 +251,7 @@ export function BloomScoreScreen() {
                   </div>
                   
                   {isToday && (
-                    <div className="text-xs text-purple-600 font-medium mt-1">
+                    <div className="text-xs text-violet-500 font-medium mt-1">
                       Current
                     </div>
                   )}
@@ -260,8 +260,8 @@ export function BloomScoreScreen() {
             })}
           </div>
           
-          <div className="mt-6 p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl border border-indigo-100">
-            <p className="text-indigo-800 text-sm leading-relaxed">
+          <div className="mt-6 p-4 bg-gradient-to-r from-violet-50 to-purple-50 rounded-xl border border-violet-100">
+            <p className="text-violet-700 text-sm leading-relaxed">
               <strong>📊 Your Weekly Journey:</strong> This chart shows your daily Bloom Score over the past 7 days. 
               Each bar represents your overall wellness score for that day, combining mood tracking, habit completion, 
               and reflection activities. Watch your patterns and celebrate your progress! Consistency over perfection is the key to lasting wellness.
@@ -320,20 +320,20 @@ export function BloomScoreScreen() {
         </div>
 
         {/* Tips for Improvement */}
-        <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-2xl p-6">
-          <h3 className="font-semibold text-purple-800 mb-4 text-xl">💡 Tips to Boost Your Bloom Score</h3>
+        <div className="bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-6">
+          <h3 className="font-semibold text-violet-700 mb-4 text-xl">💡 Tips to Boost Your Bloom Score</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <h4 className="font-medium text-purple-700">Daily Habits:</h4>
-              <ul className="text-sm text-purple-600 space-y-1">
+              <h4 className="font-medium text-violet-600">Daily Habits:</h4>
+              <ul className="text-sm text-violet-500 space-y-1">
                 <li>• Complete your daily habit checklist each day</li>
                 <li>• Stay consistent with small actions</li>
                 <li>• Celebrate small wins</li>
               </ul>
             </div>
             <div className="space-y-2">
-              <h4 className="font-medium text-purple-700">Mindful Practices:</h4>
-              <ul className="text-sm text-purple-600 space-y-1">
+              <h4 className="font-medium text-violet-600">Mindful Practices:</h4>
+              <ul className="text-sm text-violet-500 space-y-1">
                 <li>• Track your mood regularly throughout the week</li>
                 <li>• Write in your journal consistently</li>
                 <li>• Practice gratitude and reflection</li>

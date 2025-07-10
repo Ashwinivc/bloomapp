@@ -96,17 +96,17 @@ export function MindfulReadingScreen() {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Growth': 'from-green-400 to-emerald-500',
-      'Peace': 'from-blue-400 to-cyan-500',
-      'Self-Worth': 'from-purple-400 to-indigo-500',
-      'Mindfulness': 'from-orange-400 to-amber-500',
-      'Inner Strength': 'from-red-400 to-pink-500',
-      'Self-Love': 'from-pink-400 to-rose-500',
-      'Change': 'from-teal-400 to-cyan-500',
-      'Love': 'from-rose-400 to-pink-500',
-      'Healing': 'from-emerald-400 to-green-500',
-      'Presence': 'from-indigo-400 to-purple-500',
-      'Opportunity': 'from-yellow-400 to-orange-500',
+      'Growth': 'from-emerald-200 to-green-300',
+      'Peace': 'from-sky-200 to-blue-300',
+      'Self-Worth': 'from-violet-200 to-purple-300',
+      'Mindfulness': 'from-amber-200 to-orange-300',
+      'Inner Strength': 'from-rose-200 to-pink-300',
+      'Self-Love': 'from-pink-200 to-rose-300',
+      'Change': 'from-teal-200 to-cyan-300',
+      'Love': 'from-rose-200 to-pink-300',
+      'Healing': 'from-emerald-200 to-teal-300',
+      'Presence': 'from-violet-200 to-indigo-300',
+      'Opportunity': 'from-amber-200 to-yellow-300',
     };
     return colors[category as keyof typeof colors] || 'from-gray-400 to-gray-500';
   };
@@ -123,7 +123,7 @@ export function MindfulReadingScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <BookOpen className="w-8 h-8 text-orange-500 mr-3" />
+            <BookOpen className="w-8 h-8 text-amber-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">📖 Mindful Reading</h1>
           </div>
         </div>
@@ -141,7 +141,7 @@ export function MindfulReadingScreen() {
                 }}
                 className={`px-4 py-2 rounded-xl transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'bg-orange-500 text-white shadow-lg'
+                    ? 'bg-amber-400 text-white shadow-lg'
                     : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                 }`}
               >
@@ -175,7 +175,7 @@ export function MindfulReadingScreen() {
                 onClick={toggleFavorite}
                 className={`p-3 rounded-full transition-all duration-200 ${
                   isFavorite 
-                    ? 'bg-red-500 text-white shadow-lg' 
+                    ? 'bg-rose-400 text-white shadow-lg' 
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
               >
@@ -184,7 +184,7 @@ export function MindfulReadingScreen() {
 
               <button
                 onClick={getNextQuote}
-                className="flex items-center px-6 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white rounded-xl font-semibold hover:from-orange-600 hover:to-amber-700 transition-all duration-200 shadow-lg"
+                className="flex items-center px-6 py-3 bg-gradient-to-r from-amber-300 to-orange-400 text-white rounded-xl font-semibold hover:from-amber-400 hover:to-orange-500 transition-all duration-200 shadow-lg"
               >
                 <RefreshCw className="w-5 h-5 mr-2" />
                 Next Quote
@@ -200,9 +200,9 @@ export function MindfulReadingScreen() {
 
         {/* Reading Tips */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-r from-orange-100 to-amber-100 rounded-2xl p-6">
-            <h3 className="font-semibold text-orange-800 mb-4">📚 How to Practice Mindful Reading</h3>
-            <ul className="text-sm text-orange-700 space-y-2">
+          <div className="bg-gradient-to-r from-amber-50 to-orange-50 rounded-2xl p-6">
+            <h3 className="font-semibold text-amber-700 mb-4">📚 How to Practice Mindful Reading</h3>
+            <ul className="text-sm text-amber-600 space-y-2">
               <li>• Read slowly and deliberately</li>
               <li>• Pause to reflect on the meaning</li>
               <li>• Notice how the words make you feel</li>
@@ -211,9 +211,9 @@ export function MindfulReadingScreen() {
             </ul>
           </div>
 
-          <div className="bg-gradient-to-r from-purple-100 to-indigo-100 rounded-2xl p-6">
-            <h3 className="font-semibold text-purple-800 mb-4">✨ Benefits of Mindful Reading</h3>
-            <ul className="text-sm text-purple-700 space-y-2">
+          <div className="bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-6">
+            <h3 className="font-semibold text-violet-700 mb-4">✨ Benefits of Mindful Reading</h3>
+            <ul className="text-sm text-violet-600 space-y-2">
               <li>• Reduces stress and anxiety</li>
               <li>• Increases self-awareness</li>
               <li>• Provides perspective on challenges</li>
@@ -227,7 +227,7 @@ export function MindfulReadingScreen() {
         {favorites.length > 0 && (
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              You have <span className="font-semibold text-red-500">{favorites.length}</span> favorite quote{favorites.length !== 1 ? 's' : ''}
+              You have <span className="font-semibold text-rose-400">{favorites.length}</span> favorite quote{favorites.length !== 1 ? 's' : ''}
             </p>
           </div>
         )}

@@ -18,8 +18,8 @@ export function LoginScreen() {
       <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 w-full max-w-md">
         <div className="text-center mb-8">
           <div className="flex items-center justify-center mb-4">
-            <Flower2 className="w-12 h-12 text-emerald-500 mr-2" />
-            <Sparkles className="w-8 h-8 text-amber-400" />
+            <Flower2 className="w-12 h-12 text-emerald-400 mr-2" />
+            <Sparkles className="w-8 h-8 text-amber-300" />
           </div>
           <h1 className="text-3xl font-bold text-gray-800 mb-2">🌼 Daily Bloom</h1>
           <p className="text-gray-600">Your personal wellness companion</p>
@@ -36,7 +36,7 @@ export function LoginScreen() {
               value={name}
               onChange={(e) => setName(e.target.value)}
               placeholder="Enter your name"
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition-all duration-200"
+              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-emerald-400 focus:border-transparent transition-all duration-200"
               onKeyPress={(e) => e.key === 'Enter' && handleContinue()}
             />
           </div>
@@ -44,7 +44,7 @@ export function LoginScreen() {
           <button
             onClick={handleContinue}
             disabled={!name.trim()}
-            className="w-full bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-3 px-6 rounded-xl font-semibold hover:from-emerald-600 hover:to-teal-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
+            className="w-full bg-gradient-to-r from-emerald-300 to-teal-400 text-white py-3 px-6 rounded-xl font-semibold hover:from-emerald-400 hover:to-teal-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 transform hover:scale-105"
           >
             Continue Your Journey
           </button>
@@ -55,7 +55,7 @@ export function LoginScreen() {
           <div className="mt-4">
             <button
               onClick={() => setCurrentScreen('privacy-policy')}
-              className="text-emerald-600 hover:text-emerald-700 underline transition-colors duration-200"
+              className="text-emerald-500 hover:text-emerald-600 underline transition-colors duration-200"
             >
               Privacy Policy
             </button>

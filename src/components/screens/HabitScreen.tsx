@@ -26,7 +26,7 @@ export function HabitScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <CheckSquare className="w-8 h-8 text-green-500 mr-3" />
+            <CheckSquare className="w-8 h-8 text-emerald-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">Your Habits</h1>
           </div>
         </div>
@@ -42,7 +42,7 @@ export function HabitScreen() {
           
           <div className="w-full bg-gray-200 rounded-full h-3 mb-2">
             <div 
-              className="bg-gradient-to-r from-green-400 to-emerald-500 h-3 rounded-full transition-all duration-500"
+              className="bg-gradient-to-r from-emerald-300 to-green-400 h-3 rounded-full transition-all duration-500"
               style={{ width: `${completionPercentage}%` }}
             ></div>
           </div>
@@ -68,7 +68,7 @@ export function HabitScreen() {
                     onClick={() => handleToggleHabit(habit.id)}
                     className={`mr-4 p-2 rounded-xl transition-all duration-200 ${
                       habit.completed
-                        ? 'bg-green-500 text-white hover:bg-green-600'
+                        ? 'bg-emerald-400 text-white hover:bg-emerald-500'
                         : 'bg-gray-200 text-gray-400 hover:bg-gray-300'
                     }`}
                   >
@@ -86,7 +86,7 @@ export function HabitScreen() {
                       {habit.name}
                     </h3>
                     {habit.streak > 0 && (
-                      <div className="flex items-center text-sm text-orange-600 mt-1">
+                      <div className="flex items-center text-sm text-amber-500 mt-1">
                         <Flame className="w-4 h-4 mr-1" />
                         <span>{habit.streak} day streak!</span>
                       </div>
@@ -95,7 +95,7 @@ export function HabitScreen() {
                 </div>
                 
                 {habit.completed && (
-                  <div className="text-green-500 text-2xl animate-bounce">
+                  <div className="text-emerald-400 text-2xl animate-bounce">
                     ✨
                   </div>
                 )}
@@ -105,14 +105,14 @@ export function HabitScreen() {
         </div>
 
         {/* Encouragement */}
-        <div className="mt-8 bg-gradient-to-r from-green-100 to-emerald-100 rounded-2xl p-6 text-center">
-          <h3 className="font-semibold text-green-800 mb-2">
+        <div className="mt-8 bg-gradient-to-r from-emerald-50 to-green-50 rounded-2xl p-6 text-center">
+          <h3 className="font-semibold text-emerald-700 mb-2">
             {completionPercentage === 100 
               ? "You're on fire today! 🔥" 
               : "Every small step counts! 🌱"
             }
           </h3>
-          <p className="text-green-700 text-sm">
+          <p className="text-emerald-600 text-sm">
             {completionPercentage === 100
               ? "You've built amazing momentum. Keep this energy flowing into tomorrow!"
               : "Consistency is key to building lasting habits. You're doing great!"

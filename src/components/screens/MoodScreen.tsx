@@ -56,7 +56,7 @@ export function MoodScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <Heart className="w-8 h-8 text-pink-500 mr-3" />
+            <Heart className="w-8 h-8 text-rose-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">How do you feel today?</h1>
           </div>
         </div>
@@ -72,12 +72,12 @@ export function MoodScreen() {
               <button
                 key={index}
                 onClick={() => handleMoodSelect(mood)}
-                className="group bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 hover:from-pink-50 hover:to-rose-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                className="group bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-6 hover:from-rose-50 hover:to-pink-100 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
               >
                 <div className="text-4xl mb-2 group-hover:scale-110 transition-transform duration-200">
                   {mood.emoji}
                 </div>
-                <div className="text-sm font-medium text-gray-700 group-hover:text-pink-700">
+                <div className="text-sm font-medium text-gray-700 group-hover:text-rose-600">
                   {mood.label}
                 </div>
               </button>

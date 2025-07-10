@@ -130,7 +130,7 @@ export function JournalScreen() {
               onClick={() => setViewMode('write')}
               className={`flex items-center px-4 py-2 rounded-lg transition-all duration-200 ${
                 viewMode === 'write'
-                  ? 'bg-blue-500 text-white shadow-md'
+                  ? 'bg-sky-400 text-white shadow-md'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -141,7 +141,7 @@ export function JournalScreen() {
               onClick={() => setViewMode('list')}
               className={`flex items-center px-4 py-2 rounded-lg transition-all duration-200 ${
                 viewMode === 'list'
-                  ? 'bg-blue-500 text-white shadow-md'
+                  ? 'bg-sky-400 text-white shadow-md'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
@@ -162,7 +162,7 @@ export function JournalScreen() {
                   <button
                     onClick={handleSave}
                     disabled={!content.trim()}
-                    className="flex items-center px-4 py-2 bg-blue-500 text-white rounded-xl hover:bg-blue-600 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="flex items-center px-4 py-2 bg-sky-400 text-white rounded-xl hover:bg-sky-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
                   >
                     <Save className="w-4 h-4 mr-2" />
                     Save Entry
@@ -173,7 +173,7 @@ export function JournalScreen() {
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="Start writing your thoughts here... Let your mind flow freely."
-                  className="w-full h-96 p-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all duration-200"
+                  className="w-full h-96 p-4 border border-gray-200 rounded-2xl focus:ring-2 focus:ring-sky-400 focus:border-transparent resize-none transition-all duration-200"
                 />
                 
                 <div className="mt-4 text-sm text-gray-500">
@@ -186,7 +186,7 @@ export function JournalScreen() {
             <div className="space-y-4">
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-6">
                 <div className="flex items-center mb-4">
-                  <Sparkles className="w-5 h-5 text-yellow-500 mr-2" />
+                  <Sparkles className="w-5 h-5 text-amber-400 mr-2" />
                   <h3 className="font-semibold text-gray-800">Writing Prompts</h3>
                 </div>
                 
@@ -195,7 +195,7 @@ export function JournalScreen() {
                     <button
                       key={index}
                       onClick={() => handlePromptSelect(prompt)}
-                      className="w-full text-left p-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 hover:from-blue-50 hover:to-indigo-100 transition-all duration-200 text-sm"
+                      className="w-full text-left p-3 rounded-xl bg-gradient-to-r from-gray-50 to-gray-100 hover:from-sky-50 hover:to-blue-100 transition-all duration-200 text-sm"
                     >
                       {prompt}
                     </button>
@@ -203,9 +203,9 @@ export function JournalScreen() {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-r from-blue-100 to-indigo-100 rounded-2xl p-6">
-                <h3 className="font-semibold text-blue-800 mb-2">Benefits of Journaling</h3>
-                <ul className="text-sm text-blue-700 space-y-1">
+              <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-6">
+                <h3 className="font-semibold text-sky-700 mb-2">Benefits of Journaling</h3>
+                <ul className="text-sm text-sky-600 space-y-1">
                   <li>• Reduces stress and anxiety</li>
                   <li>• Improves self-awareness</li>
                   <li>• Enhances emotional processing</li>
@@ -229,7 +229,7 @@ export function JournalScreen() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Search your journal entries..."
-                  className="flex-1 px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="flex-1 px-4 py-2 border border-gray-200 rounded-xl focus:ring-2 focus:ring-sky-400 focus:border-transparent"
                 />
               </div>
             </div>
@@ -251,7 +251,7 @@ export function JournalScreen() {
                   {!searchTerm && (
                     <button
                       onClick={() => setViewMode('write')}
-                      className="px-6 py-3 bg-blue-500 text-white rounded-xl hover:bg-blue-600 transition-all duration-200"
+                      className="px-6 py-3 bg-sky-400 text-white rounded-xl hover:bg-sky-500 transition-all duration-200"
                     >
                       Write First Entry
                     </button>
@@ -275,7 +275,7 @@ export function JournalScreen() {
                         })}</span>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                        <span className="text-blue-500 text-sm font-medium">Read more →</span>
+                        <span className="text-sky-500 text-sm font-medium">Read more →</span>
                       </div>
                     </div>
                     
@@ -287,7 +287,7 @@ export function JournalScreen() {
                       <span className="text-xs text-gray-400">
                         {entry.content.length} characters
                       </span>
-                      <div className="w-2 h-2 bg-blue-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
+                      <div className="w-2 h-2 bg-sky-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
                     </div>
                   </div>
                 ))
@@ -304,7 +304,7 @@ export function JournalScreen() {
               <div className="flex items-center justify-between mb-6 pb-6 border-b border-gray-200">
                 <button
                   onClick={() => setViewMode('list')}
-                  className="flex items-center text-blue-600 hover:text-blue-700 transition-colors duration-200"
+                  className="flex items-center text-sky-500 hover:text-sky-600 transition-colors duration-200"
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
                   Back to all entries
@@ -343,9 +343,9 @@ export function JournalScreen() {
             </div>
 
             {/* Reflection Questions */}
-            <div className="mt-6 bg-gradient-to-r from-purple-100 to-indigo-100 rounded-2xl p-6">
-              <h3 className="font-semibold text-purple-800 mb-4">🤔 Reflection Questions</h3>
-              <div className="space-y-2 text-sm text-purple-700">
+            <div className="mt-6 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-6">
+              <h3 className="font-semibold text-violet-700 mb-4">🤔 Reflection Questions</h3>
+              <div className="space-y-2 text-sm text-violet-600">
                 <p>• What emotions do you notice in this entry?</p>
                 <p>• What patterns or themes emerge from your thoughts?</p>
                 <p>• How have your perspectives changed since writing this?</p>

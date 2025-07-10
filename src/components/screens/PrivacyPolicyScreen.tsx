@@ -17,7 +17,7 @@ export function PrivacyPolicyScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <Shield className="w-8 h-8 text-blue-500 mr-3" />
+            <Shield className="w-8 h-8 text-sky-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">🔒 Privacy Policy</h1>
           </div>
         </div>
@@ -27,7 +27,7 @@ export function PrivacyPolicyScreen() {
           {/* Introduction */}
           <section>
             <div className="flex items-center mb-4">
-              <UserCheck className="w-6 h-6 text-green-500 mr-2" />
+              <UserCheck className="w-6 h-6 text-emerald-400 mr-2" />
               <h2 className="text-2xl font-bold text-gray-800">Your Privacy Matters</h2>
             </div>
             <p className="text-gray-600 leading-relaxed">
@@ -42,7 +42,7 @@ export function PrivacyPolicyScreen() {
           {/* Information We Collect */}
           <section>
             <div className="flex items-center mb-4">
-              <Database className="w-6 h-6 text-purple-500 mr-2" />
+              <Database className="w-6 h-6 text-violet-400 mr-2" />
               <h3 className="text-xl font-semibold text-gray-800">Information We Collect</h3>
             </div>
             <div className="space-y-4">
@@ -69,20 +69,20 @@ export function PrivacyPolicyScreen() {
           {/* How We Use Your Information */}
           <section>
             <div className="flex items-center mb-4">
-              <Eye className="w-6 h-6 text-blue-500 mr-2" />
+              <Eye className="w-6 h-6 text-sky-400 mr-2" />
               <h3 className="text-xl font-semibold text-gray-800">How We Use Your Information</h3>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="bg-blue-50 rounded-xl p-4">
-                <h4 className="font-medium text-blue-700 mb-2">Personalization</h4>
-                <p className="text-sm text-blue-600">
+              <div className="bg-sky-50 rounded-xl p-4">
+                <h4 className="font-medium text-sky-600 mb-2">Personalization</h4>
+                <p className="text-sm text-sky-500">
                   We use your data to personalize your wellness journey, calculate your Bloom Score, 
                   and provide relevant insights and recommendations.
                 </p>
               </div>
-              <div className="bg-green-50 rounded-xl p-4">
-                <h4 className="font-medium text-green-700 mb-2">Improvement</h4>
-                <p className="text-sm text-green-600">
+              <div className="bg-emerald-50 rounded-xl p-4">
+                <h4 className="font-medium text-emerald-600 mb-2">Improvement</h4>
+                <p className="text-sm text-emerald-500">
                   Anonymous usage data helps us improve app features, fix bugs, 
                   and develop new wellness tools that better serve our users.
                 </p>
@@ -93,10 +93,10 @@ export function PrivacyPolicyScreen() {
           {/* Data Security */}
           <section>
             <div className="flex items-center mb-4">
-              <Lock className="w-6 h-6 text-red-500 mr-2" />
+              <Lock className="w-6 h-6 text-rose-400 mr-2" />
               <h3 className="text-xl font-semibold text-gray-800">Data Security</h3>
             </div>
-            <div className="bg-red-50 rounded-xl p-4">
+            <div className="bg-rose-50 rounded-xl p-4">
               <p className="text-gray-700 mb-3">
                 We implement industry-standard security measures to protect your personal information:
               </p>
@@ -113,13 +113,13 @@ export function PrivacyPolicyScreen() {
           {/* Data Retention */}
           <section>
             <div className="flex items-center mb-4">
-              <Globe className="w-6 h-6 text-orange-500 mr-2" />
+              <Globe className="w-6 h-6 text-amber-400 mr-2" />
               <h3 className="text-xl font-semibold text-gray-800">Data Retention & Your Rights</h3>
             </div>
             <div className="space-y-4">
-              <div className="bg-orange-50 rounded-xl p-4">
-                <h4 className="font-medium text-orange-700 mb-2">Your Rights</h4>
-                <ul className="text-sm text-orange-600 space-y-1">
+              <div className="bg-amber-50 rounded-xl p-4">
+                <h4 className="font-medium text-amber-600 mb-2">Your Rights</h4>
+                <ul className="text-sm text-amber-500 space-y-1">
                   <li>• Access your personal data at any time</li>
                   <li>• Request correction of inaccurate information</li>
                   <li>• Delete your account and associated data</li>
@@ -139,9 +139,9 @@ export function PrivacyPolicyScreen() {
 
           {/* Local Storage Notice */}
           <section>
-            <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4">
-              <h4 className="font-medium text-yellow-800 mb-2">📱 Local Storage Notice</h4>
-              <p className="text-sm text-yellow-700">
+            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <h4 className="font-medium text-amber-700 mb-2">📱 Local Storage Notice</h4>
+              <p className="text-sm text-amber-600">
                 Currently, Daily Bloom stores your data locally on your device. This means your information 
                 stays private and secure on your device, but it also means your data won't sync across devices. 
                 We're working on secure cloud sync options for future updates.
@@ -151,7 +151,7 @@ export function PrivacyPolicyScreen() {
 
           {/* Contact Information */}
           <section>
-            <div className="bg-gradient-to-r from-blue-100 to-purple-100 rounded-xl p-6 text-center">
+            <div className="bg-gradient-to-r from-sky-50 to-violet-50 rounded-xl p-6 text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Questions About Your Privacy?</h3>
               <p className="text-gray-600 mb-4">
                 We're here to help! If you have any questions about this privacy policy or how we handle your data, 

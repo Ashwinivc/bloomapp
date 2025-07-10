@@ -88,17 +88,17 @@ export function TipScreen() {
 
   const getCategoryColor = (category: string) => {
     const colors = {
-      'Breathing': 'from-blue-400 to-cyan-500',
-      'Gratitude': 'from-yellow-400 to-amber-500',
-      'Hydration': 'from-blue-300 to-blue-500',
-      'Movement': 'from-green-400 to-emerald-500',
-      'Eye Care': 'from-purple-400 to-indigo-500',
-      'Mindfulness': 'from-pink-400 to-rose-500',
-      'Nutrition': 'from-orange-400 to-red-500',
-      'Sleep': 'from-indigo-400 to-purple-500',
-      'Stretching': 'from-teal-400 to-cyan-500',
-      'Self-Love': 'from-rose-400 to-pink-500',
-      'Digital Wellness': 'from-gray-400 to-slate-500',
+      'Growth': 'from-emerald-200 to-green-300',
+      'Peace': 'from-sky-200 to-blue-300',
+      'Self-Worth': 'from-violet-200 to-purple-300',
+      'Mindfulness': 'from-amber-200 to-orange-300',
+      'Inner Strength': 'from-rose-200 to-pink-300',
+      'Self-Love': 'from-pink-200 to-rose-300',
+      'Change': 'from-teal-200 to-cyan-300',
+      'Love': 'from-rose-200 to-pink-300',
+      'Healing': 'from-emerald-200 to-teal-300',
+      'Presence': 'from-violet-200 to-indigo-300',
+      'Opportunity': 'from-amber-200 to-yellow-300',
       'Music Therapy': 'from-violet-400 to-purple-500',
     };
     return colors[category as keyof typeof colors] || 'from-gray-400 to-gray-500';
@@ -116,7 +116,7 @@ export function TipScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <Lightbulb className="w-8 h-8 text-yellow-500 mr-3" />
+            <Lightbulb className="w-8 h-8 text-amber-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">Today's Bloom Tip</h1>
           </div>
         </div>
@@ -144,7 +144,7 @@ export function TipScreen() {
             <button
               onClick={getNewTip}
               disabled={isAnimating}
-              className="flex items-center mx-auto px-6 py-3 bg-gradient-to-r from-yellow-500 to-amber-600 text-white rounded-xl font-semibold hover:from-yellow-600 hover:to-amber-700 disabled:opacity-50 transition-all duration-200 shadow-lg transform hover:scale-105"
+              className="flex items-center mx-auto px-6 py-3 bg-gradient-to-r from-amber-300 to-orange-400 text-white rounded-xl font-semibold hover:from-amber-400 hover:to-orange-500 disabled:opacity-50 transition-all duration-200 shadow-lg transform hover:scale-105"
             >
               <RefreshCw className={`w-5 h-5 mr-2 ${isAnimating ? 'animate-spin' : ''}`} />
               Get Another Tip
@@ -153,21 +153,21 @@ export function TipScreen() {
         </div>
 
         {/* Benefits Section */}
-        <div className="bg-gradient-to-r from-yellow-100 to-amber-100 rounded-2xl p-6 mb-6">
+        <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-2xl p-6 mb-6">
           <div className="flex items-center mb-4">
-            <Sparkles className="w-6 h-6 text-yellow-600 mr-2" />
-            <h3 className="font-semibold text-yellow-800">Why Daily Tips Matter</h3>
+            <Sparkles className="w-6 h-6 text-amber-500 mr-2" />
+            <h3 className="font-semibold text-amber-700">Why Daily Tips Matter</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <h4 className="font-medium text-yellow-700 mb-2">Small Steps, Big Impact</h4>
-              <p className="text-sm text-yellow-600">
+              <h4 className="font-medium text-amber-600 mb-2">Small Steps, Big Impact</h4>
+              <p className="text-sm text-amber-500">
                 Tiny daily actions compound over time to create significant positive changes in your life.
               </p>
             </div>
             <div>
-              <h4 className="font-medium text-yellow-700 mb-2">Mindful Awareness</h4>
-              <p className="text-sm text-yellow-600">
+              <h4 className="font-medium text-amber-600 mb-2">Mindful Awareness</h4>
+              <p className="text-sm text-amber-500">
                 Regular wellness tips help you stay conscious of your well-being throughout the day.
               </p>
             </div>
@@ -179,28 +179,28 @@ export function TipScreen() {
           <h3 className="font-semibold text-gray-800 mb-4">🌱 How to Make Tips Stick</h3>
           <div className="space-y-3">
             <div className="flex items-start">
-              <span className="font-medium text-green-600 mr-3">1.</span>
+              <span className="font-medium text-emerald-500 mr-3">1.</span>
               <div>
                 <h4 className="font-medium text-gray-700">Start Small</h4>
                 <p className="text-sm text-gray-600">Choose one tip and practice it for a week before adding another.</p>
               </div>
             </div>
             <div className="flex items-start">
-              <span className="font-medium text-green-600 mr-3">2.</span>
+              <span className="font-medium text-emerald-500 mr-3">2.</span>
               <div>
                 <h4 className="font-medium text-gray-700">Set Reminders</h4>
                 <p className="text-sm text-gray-600">Use phone alerts or sticky notes to remind yourself throughout the day.</p>
               </div>
             </div>
             <div className="flex items-start">
-              <span className="font-medium text-green-600 mr-3">3.</span>
+              <span className="font-medium text-emerald-500 mr-3">3.</span>
               <div>
                 <h4 className="font-medium text-gray-700">Track Progress</h4>
                 <p className="text-sm text-gray-600">Notice how implementing tips makes you feel and celebrate small wins.</p>
               </div>
             </div>
             <div className="flex items-start">
-              <span className="font-medium text-green-600 mr-3">4.</span>
+              <span className="font-medium text-emerald-500 mr-3">4.</span>
               <div>
                 <h4 className="font-medium text-gray-700">Be Patient</h4>
                 <p className="text-sm text-gray-600">Building new habits takes time. Be kind to yourself in the process.</p>

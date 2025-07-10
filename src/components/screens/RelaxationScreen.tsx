@@ -9,7 +9,7 @@ const relaxationOptions = [
     title: '🌬️ Breathing Exercise',
     description: 'Calming breathwork to reduce stress',
     icon: Wind,
-    color: 'from-blue-400 to-cyan-500',
+    color: 'from-sky-200 to-blue-300',
     action: 'breathing',
   },
   {
@@ -17,7 +17,7 @@ const relaxationOptions = [
     title: '📖 Mindful Reading',
     description: 'Inspirational quotes and wisdom',
     icon: BookOpen,
-    color: 'from-orange-400 to-amber-500',
+    color: 'from-amber-200 to-orange-300',
     action: 'reading',
   },
 ];
@@ -76,7 +76,7 @@ export function RelaxationScreen() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-pink-400 to-rose-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-rose-200 to-pink-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🧠</span>
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Mental Clarity</h4>
@@ -86,7 +86,7 @@ export function RelaxationScreen() {
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-sky-200 to-blue-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">💚</span>
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Emotional Balance</h4>
@@ -96,7 +96,7 @@ export function RelaxationScreen() {
             </div>
             
             <div className="text-center">
-              <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-12 h-12 bg-gradient-to-r from-emerald-200 to-green-300 rounded-full flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">⚡</span>
               </div>
               <h4 className="font-semibold text-gray-800 mb-2">Energy Renewal</h4>
@@ -108,15 +108,15 @@ export function RelaxationScreen() {
         </div>
 
         {/* Quick Tips */}
-        <div className="mt-8 bg-gradient-to-r from-indigo-100 to-purple-100 rounded-2xl p-6">
-          <h3 className="font-semibold text-indigo-800 mb-4">💡 Quick Relaxation Tips</h3>
+        <div className="mt-8 bg-gradient-to-r from-violet-50 to-purple-50 rounded-2xl p-6">
+          <h3 className="font-semibold text-violet-700 mb-4">💡 Quick Relaxation Tips</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <ul className="text-sm text-indigo-700 space-y-2">
+            <ul className="text-sm text-violet-600 space-y-2">
               <li>• Take 3 deep breaths before starting</li>
               <li>• Find a quiet, comfortable space</li>
               <li>• Turn off notifications and distractions</li>
             </ul>
-            <ul className="text-sm text-indigo-700 space-y-2">
+            <ul className="text-sm text-violet-600 space-y-2">
               <li>• Don't judge your thoughts, just observe</li>
               <li>• Start with just 5 minutes daily</li>
               <li>• Be patient and kind with yourself</li>

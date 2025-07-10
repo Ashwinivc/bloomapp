@@ -8,25 +8,25 @@ const themes = [
     id: 'calm-forest' as Theme,
     name: 'Calm Forest',
     description: 'Peaceful greens and earth tones',
-    gradient: 'from-emerald-400 to-teal-600',
-    preview: 'bg-emerald-100',
-    accent: 'emerald-500',
+    gradient: 'from-emerald-200 to-teal-300',
+    preview: 'bg-emerald-50',
+    accent: 'emerald-400',
   },
   {
     id: 'floral-bliss' as Theme,
     name: 'Floral Bliss',
     description: 'Soft pinks and warm roses',
-    gradient: 'from-pink-400 to-rose-600',
-    preview: 'bg-pink-100',
-    accent: 'rose-500',
+    gradient: 'from-rose-200 to-pink-300',
+    preview: 'bg-rose-50',
+    accent: 'rose-400',
   },
   {
     id: 'sunrise-glow' as Theme,
     name: 'Sunrise Glow',
     description: 'Warm oranges and golden hues',
-    gradient: 'from-orange-400 to-amber-600',
-    preview: 'bg-orange-100',
-    accent: 'amber-500',
+    gradient: 'from-amber-200 to-orange-300',
+    preview: 'bg-amber-50',
+    accent: 'amber-400',
   },
 ];
 
@@ -52,7 +52,7 @@ export function ThemeScreen() {
             <ArrowLeft className="w-6 h-6 text-gray-600" />
           </button>
           <div className="flex items-center">
-            <Palette className="w-8 h-8 text-purple-500 mr-3" />
+            <Palette className="w-8 h-8 text-violet-400 mr-3" />
             <h1 className="text-3xl font-bold text-gray-800">🎨 Choose Your Theme</h1>
           </div>
         </div>
@@ -93,8 +93,8 @@ export function ThemeScreen() {
               {/* Selection Indicator */}
               {state.selectedTheme === theme.id && (
                 <div className="absolute top-4 right-4">
-                  <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
-                    <Check className="w-5 h-5 text-white" />
+                  <div className="w-8 h-8 bg-emerald-400 rounded-full flex items-center justify-center">
+                    <Check className="w-6 h-6 text-emerald-400" />
                   </div>
                 </div>
               )}

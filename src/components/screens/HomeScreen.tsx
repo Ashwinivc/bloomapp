@@ -14,14 +14,14 @@ import {
 import { useApp } from '../../context/AppContext';
 
 const menuItems = [
-  { id: 'mood', title: 'Track Mood', icon: Heart, screen: 'mood', color: 'from-pink-400 to-rose-500' },
-  { id: 'habits', title: 'View Habits', icon: CheckSquare, screen: 'habits', color: 'from-green-400 to-emerald-500' },
-  { id: 'tip', title: "Today's Bloom Tip", icon: Lightbulb, screen: 'tip', color: 'from-yellow-400 to-amber-500' },
-  { id: 'journal', title: 'Journal', icon: BookOpen, screen: 'journal', color: 'from-blue-400 to-indigo-500' },
-  { id: 'score', title: 'Bloom Score', icon: TrendingUp, screen: 'score', color: 'from-purple-400 to-violet-500' },
-  { id: 'coach', title: 'AI Coach', icon: MessageCircle, screen: 'coach', color: 'from-teal-400 to-cyan-500' },
-  { id: 'themes', title: 'Themes', icon: Palette, screen: 'themes', color: 'from-orange-400 to-red-500' },
-  { id: 'relaxation', title: 'Relaxation Zone', icon: Flower2, screen: 'relaxation', color: 'from-emerald-400 to-green-500' },
+  { id: 'mood', title: 'Track Mood', icon: Heart, screen: 'mood', color: 'from-rose-200 to-pink-300' },
+  { id: 'habits', title: 'View Habits', icon: CheckSquare, screen: 'habits', color: 'from-emerald-200 to-green-300' },
+  { id: 'tip', title: "Today's Bloom Tip", icon: Lightbulb, screen: 'tip', color: 'from-amber-200 to-yellow-300' },
+  { id: 'journal', title: 'Journal', icon: BookOpen, screen: 'journal', color: 'from-sky-200 to-blue-300' },
+  { id: 'score', title: 'Bloom Score', icon: TrendingUp, screen: 'score', color: 'from-violet-200 to-purple-300' },
+  { id: 'coach', title: 'AI Coach', icon: MessageCircle, screen: 'coach', color: 'from-teal-200 to-cyan-300' },
+  { id: 'themes', title: 'Themes', icon: Palette, screen: 'themes', color: 'from-orange-200 to-amber-300' },
+  { id: 'relaxation', title: 'Relaxation Zone', icon: Flower2, screen: 'relaxation', color: 'from-emerald-200 to-teal-300' },
 ];
 
 export function HomeScreen() {
@@ -53,7 +53,7 @@ export function HomeScreen() {
           <div className="flex items-center justify-between">
             <div>
               <div className="flex items-center mb-2">
-                <Flower2 className="w-8 h-8 text-emerald-500 mr-2" />
+                <Flower2 className="w-8 h-8 text-emerald-400 mr-2" />
                 <h1 className="text-2xl font-bold text-gray-800">🌼 Daily Bloom</h1>
               </div>
               <p className="text-gray-600">
@@ -62,17 +62,17 @@ export function HomeScreen() {
             </div>
             <div className="flex items-center space-x-4">
               <div className="text-right">
-                <div className="flex items-center text-emerald-600 mb-1">
+                <div className="flex items-center text-emerald-500 mb-1">
                   <Sparkles className="w-5 h-5 mr-1" />
                   <span className="font-semibold">Bloom Score</span>
                 </div>
-                <div className="text-2xl font-bold text-emerald-700">
+                <div className="text-2xl font-bold text-emerald-600">
                   {state.bloomScore.overall}%
                 </div>
               </div>
               <button
                 onClick={handleLogout}
-                className="p-2 rounded-full bg-red-100 hover:bg-red-200 text-red-600 hover:text-red-700 transition-all duration-200 group"
+                className="p-2 rounded-full bg-rose-100 hover:bg-rose-200 text-rose-500 hover:text-rose-600 transition-all duration-200 group"
                 title="Exit App"
               >
                 <LogOut className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
@@ -82,8 +82,8 @@ export function HomeScreen() {
         </div>
 
         {/* Welcome Back Message */}
-        <div className="bg-gradient-to-r from-emerald-100 to-teal-100 rounded-2xl p-4 mb-6">
-          <p className="text-emerald-800 text-center">
+        <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl p-4 mb-6">
+          <p className="text-emerald-700 text-center">
             <span className="font-semibold">Welcome back!</span> Your progress is automatically saved locally on your device. 
             Every moment you spend here is an investment in your well-being. 🌱
           </p>
@@ -113,7 +113,7 @@ export function HomeScreen() {
           <h3 className="font-semibold text-gray-800 mb-4">Recent Activity</h3>
           <div className="grid grid-cols-3 gap-4">
             <div className="text-center">
-              <div className="text-2xl font-bold text-pink-600">
+              <div className="text-2xl font-bold text-rose-500">
                 {state.moodEntries.filter(entry => {
                   const entryDate = new Date(entry.date);
                   const weekAgo = new Date();
@@ -124,13 +124,13 @@ export function HomeScreen() {
               <div className="text-sm text-gray-600">Mood Entries (7d)</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-green-600">
+              <div className="text-2xl font-bold text-emerald-500">
                 {state.habits.filter(h => h.completed).length}/{state.habits.length}
               </div>
               <div className="text-sm text-gray-600">Habits Today</div>
             </div>
             <div className="text-center">
-              <div className="text-2xl font-bold text-blue-600">
+              <div className="text-2xl font-bold text-sky-500">
                 {state.journalEntries.filter(entry => {
                   const entryDate = new Date(entry.date);
                   const weekAgo = new Date();
