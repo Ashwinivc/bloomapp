@@ -23,6 +23,41 @@ const themes = {
     text: 'amber-700',
     background: 'amber-25',
   },
+  'serene-ocean': {
+    primary: 'from-sky-200 to-cyan-300',
+    secondary: 'from-sky-50 to-cyan-50',
+    accent: 'sky-400',
+    text: 'sky-700',
+    background: 'sky-25',
+  },
+  'lavender-dream': {
+    primary: 'from-purple-200 to-violet-300',
+    secondary: 'from-purple-50 to-violet-50',
+    accent: 'purple-400',
+    text: 'purple-700',
+    background: 'purple-25',
+  },
+  'peachy-sunset': {
+    primary: 'from-orange-200 to-red-300',
+    secondary: 'from-orange-50 to-red-50',
+    accent: 'orange-400',
+    text: 'orange-700',
+    background: 'orange-25',
+  },
+  'mint-fresh': {
+    primary: 'from-green-200 to-emerald-300',
+    secondary: 'from-green-50 to-emerald-50',
+    accent: 'green-400',
+    text: 'green-700',
+    background: 'green-25',
+  },
+  'warm-earth': {
+    primary: 'from-yellow-200 to-amber-300',
+    secondary: 'from-yellow-50 to-amber-50',
+    accent: 'yellow-400',
+    text: 'yellow-700',
+    background: 'yellow-25',
+  },
 };
 
 interface ThemeProviderProps {

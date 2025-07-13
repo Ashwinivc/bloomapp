@@ -7,6 +7,7 @@ interface AppContextType {
   state: AppState;
   setUser: (user: User) => void;
   setCurrentScreen: (screen: string) => void;
+  setDailyBloomReminderTime: (time: string | null) => void;
   addMoodEntry: (entry: MoodEntry) => void;
   toggleHabit: (habitId: string) => void;
   addJournalEntry: (entry: JournalEntry) => void;
@@ -21,6 +22,7 @@ const AppContext = createContext<AppContextType | undefined>(undefined);
 type Action =
   | { type: 'SET_USER'; payload: User }
   | { type: 'SET_CURRENT_SCREEN'; payload: string }
+  | { type: 'SET_DAILY_BLOOM_REMINDER_TIME'; payload: string | null }
   | { type: 'ADD_MOOD_ENTRY'; payload: MoodEntry }
   | { type: 'TOGGLE_HABIT'; payload: string }
   | { type: 'ADD_JOURNAL_ENTRY'; payload: JournalEntry }
@@ -31,8 +33,9 @@ type Action =
 
 const initialState: AppState = {
   user: null,
-  currentScreen: 'login',
+  currentScreen: 'landing',
   lastActiveDate: getTodayDateString(),
+  dailyBloomReminderTime: null,
   dailyBloomScores: {},
   moodEntries: [],
   habits: [
@@ -123,6 +126,8 @@ function appReducer(state: AppState, action: Action): AppState {
       return { ...state, user: action.payload };
     case 'SET_CURRENT_SCREEN':
       return { ...state, currentScreen: action.payload };
+    case 'SET_DAILY_BLOOM_REMINDER_TIME':
+      return { ...state, dailyBloomReminderTime: action.payload };
     case 'ADD_MOOD_ENTRY':
       return { ...state, moodEntries: [...state.moodEntries, action.payload] };
     case 'TOGGLE_HABIT':
@@ -220,6 +225,10 @@ export function AppProvider({ children }: { children: ReactNode }) {
     trackPageView(screen);
   };
   
+  const setDailyBloomReminderTime = (time: string | null) => {
+    dispatch({ type: 'SET_DAILY_BLOOM_REMINDER_TIME', payload: time });
+  };
+  
   const addMoodEntry = (entry: MoodEntry) => {
     dispatch({ type: 'ADD_MOOD_ENTRY', payload: entry });
     trackWellnessEvent.moodEntry(entry.emoji);
@@ -267,6 +276,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
         state,
         setUser,
         setCurrentScreen,
+        setDailyBloomReminderTime,
         addMoodEntry,
         toggleHabit,
         addJournalEntry,

@@ -9,7 +9,8 @@ import {
   Palette, 
   Flower2,
   Sparkles,
-  LogOut
+  LogOut,
+  Settings
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 
@@ -22,6 +23,7 @@ const menuItems = [
   { id: 'coach', title: 'AI Coach', icon: MessageCircle, screen: 'coach', color: 'from-teal-200 to-cyan-300' },
   { id: 'themes', title: 'Themes', icon: Palette, screen: 'themes', color: 'from-orange-200 to-amber-300' },
   { id: 'relaxation', title: 'Relaxation Zone', icon: Flower2, screen: 'relaxation', color: 'from-emerald-200 to-teal-300' },
+  { id: 'settings', title: 'Settings', icon: Settings, screen: 'settings', color: 'from-violet-200 to-purple-300' },
 ];
 
 export function HomeScreen() {
@@ -61,6 +63,13 @@ export function HomeScreen() {
               </p>
             </div>
             <div className="flex items-center space-x-4">
+              <button
+                onClick={() => setCurrentScreen('settings')}
+                className="p-2 rounded-full bg-violet-100 hover:bg-violet-200 text-violet-500 hover:text-violet-600 transition-all duration-200 group"
+                title="Settings"
+              >
+                <Settings className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" />
+              </button>
               <div className="text-right">
                 <div className="flex items-center text-emerald-500 mb-1">
                   <Sparkles className="w-5 h-5 mr-1" />

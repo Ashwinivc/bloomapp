@@ -15,12 +15,16 @@ import { NatureSoundsScreen } from './components/screens/NatureSoundsScreen';
 import { MindfulReadingScreen } from './components/screens/MindfulReadingScreen';
 import { TipScreen } from './components/screens/TipScreen';
 import { PrivacyPolicyScreen } from './components/screens/PrivacyPolicyScreen';
+import { LandingScreen } from './components/screens/LandingScreen';
+import { SettingsScreen } from './components/screens/SettingsScreen';
 
 function AppContent() {
   const { state } = useApp();
 
   const renderScreen = () => {
     switch (state.currentScreen) {
+      case 'landing':
+        return <LandingScreen />;
       case 'login':
         return <LoginScreen />;
       case 'home':
@@ -37,6 +41,8 @@ function AppContent() {
         return <AICoachScreen />;
       case 'themes':
         return <ThemeScreen />;
+      case 'settings':
+        return <SettingsScreen />;
       case 'relaxation':
         return <RelaxationScreen />;
       case 'breathing':
@@ -50,7 +56,7 @@ function AppContent() {
       case 'privacy-policy':
         return <PrivacyPolicyScreen />;
       default:
-        return <HomeScreen />;
+        return <LandingScreen />;
     }
   };
 

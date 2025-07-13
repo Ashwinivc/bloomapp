@@ -44,6 +44,7 @@ export interface AppState {
   user: User | null;
   currentScreen: string;
   lastActiveDate?: string;
+  dailyBloomReminderTime: string | null;
   dailyBloomScores?: { [date: string]: BloomScore };
   moodEntries: MoodEntry[];
   habits: Habit[];
@@ -52,3 +53,4 @@ export interface AppState {
   chatMessages: ChatMessage[];
   selectedTheme: Theme;
 }
+export type Theme = 'calm-forest' | 'floral-bliss' | 'sunrise-glow' | 'serene-ocean' | 'lavender-dream' | 'peachy-sunset' | 'mint-fresh' | 'warm-earth';
